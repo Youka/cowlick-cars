@@ -1,4 +1,3 @@
-
 <template>
   <div>
     {{name}}
@@ -11,17 +10,18 @@
   export default Vue.extend({
     data: function() {
       return {
-        name: 'Hello World!',
+        name: 'Hello World!'
       }
-    },
+    }
   });
 </script>
 
 <style lang="scss">
-$primary-color: white;
-$bg: black;
-body {
-  color: $primary-color;
-  background-color: $bg;
-}
+  $primary-color: white;
+  $bg: black;
+  
+  body {
+    color: $primary-color;
+    background-color: $bg;
+  }
 </style>

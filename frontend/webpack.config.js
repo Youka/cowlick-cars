@@ -1,8 +1,7 @@
-const webpack = require('webpack');
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
-const config = {
+module.exports = {
   entry: './src/index.ts',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -13,11 +12,6 @@ const config = {
       {
         test: /\.vue$/,
         loader: 'vue-loader'
-      },
-      {
-        test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
       },
       {
         test: /\.(ts|tsx)?$/,
@@ -66,5 +60,3 @@ const config = {
     new VueLoaderPlugin()
   ]
 }
-
-module.exports = config;

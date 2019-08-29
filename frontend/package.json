@@ -1,33 +1,40 @@
 {
-  "name": "empty-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "name": "cowlick-cars_webapp",
+  "version": "0.1.0",
+  "description": "Frontend of cowlick-cars management platform.",
+  "keywords": [
+    "frontend",
+    "management"
+  ],
+  "author": "Christoph 'Youka' Spanknebel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Youka/cowlick-cars.git"
+  },
+  "homepage": "https://github.com/Youka/cowlick-cars",
+  "bugs": "https://github.com/Youka/cowlick-cars/issues",
+  "license": "MIT",
+  "browser": "index.js",
   "scripts": {
     "clean": "rm dist/bundle.js",
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production"
   },
   "dependencies": {
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vue-router": "^3.1.2"
   },
   "devDependencies": {
     "webpack": "^4.39.3",
     "webpack-cli": "^3.3.7",
-    "vue-loader": "^15.7.1",
-    "vue-template-compiler": "^2.6.10",
-    "babel-loader": "^8.0.6",
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "typescript": "^3.6.2",
-    "ts-loader": "^6.0.4",
     "css-loader": "^3.2.0",
     "sass-loader": "^8.0.0",
     "node-sass": "^4.12.0",
     "url-loader": "^2.1.0",
-    "file-loader": "^4.2.0"
+    "file-loader": "^4.2.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.6.2",
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10"
   }
 }
