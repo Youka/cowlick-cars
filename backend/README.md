@@ -4,6 +4,6 @@
 * OpenJDK 8
 * Gradle
 * Kotlin
-* Servlet-API 3
+* Servlet-API 4
 * Jersey + Jackson
 * MyBatis
