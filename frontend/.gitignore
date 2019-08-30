@@ -1,0 +1,6 @@
+# NPM dependencies cache
+/node_modules/
+/package-lock.json
+
+# NPM output
+/dist/bundle.js
