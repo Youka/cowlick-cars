@@ -1,4 +1,7 @@
 {
+    "include": [
+        "./src/**/*", "vue-shim.d.ts"
+    ],
     "compilerOptions": {
         "outDir": "./dist/",
         "sourceMap": true,
@@ -8,9 +11,6 @@
         "module": "es6",
         "moduleResolution": "node",
         "target": "es5",
-        "allowJs": true,
-    },
-    "include": [
-        "./src/**/*"
-    ]
+        "allowJs": true
+    }
 }
