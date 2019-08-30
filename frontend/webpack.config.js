@@ -1,18 +1,21 @@
+// Imports
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
+// Return webpack configuration
 module.exports = {
+  // Input file to bundle with all dependencies
   entry: './src/index.ts',
+  // Output file as bundling result
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  // Modules for additional file processing
   module: {
+    // Invoke loaders by file extensions
     rules: [
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
+      // Typescript
       {
         test: /\.(ts|tsx)?$/,
         loader: 'ts-loader',
@@ -23,6 +26,7 @@ module.exports = {
           ]
         }
       },
+      // SASS
       {
         test: /\.scss$/,
         use: [
@@ -31,31 +35,33 @@ module.exports = {
           'sass-loader'
         ]
       },
+      // Bitmaps & fonts
       {
-        test: /\.png$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              mimetype: 'image/png'
-            }
-          }
-        ]
+        test: /\.(png|jpe?g|gif|ttf|woff)$/i,
+        loader: 'file-loader'
       },
+      // Vector images
       {
-        test: /\.svg$/,
-        use: 'file-loader'
+        test: /\.svg$/i,
+        loader: 'url-loader'
+      },
+      // Vue
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader'
       }
     ]
   },
+  // File extensions to consider by webpack itself
   resolve: {
     extensions: [
       '.js',
-      '.vue',
+      '.ts',
       '.tsx',
-      '.ts'
+      '.vue'
     ]
   },
+  // Webpack plugins for major extension
   plugins: [
     new VueLoaderPlugin()
   ]
