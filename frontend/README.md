@@ -1,5 +1,5 @@
 # cowlick-cars_webapp
-Template project.
+Frontend of cowlick-cars management platform.
 
 ## Building and running on localhost
 * Install dependencies: `npm install`
