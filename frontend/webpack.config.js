@@ -64,11 +64,18 @@ module.exports = {
   },
   // Webpack plugins for major extension
   plugins: [
+    // Clean possible remainings of last build
     new CleanWebpackPlugin(),
+    // Generate one-and-only html file to be processed by javascript bundle
     new HtmlWebpackPlugin({
+      // File to extend by js & css resources
       template: "src/index.html",
-      hash: true
+      // All resource requests with hash parameter to develop around caches
+      hash: true,
+      // Furthermore add favicon to template
+      favicon: "src/favicon.png"
     }),
+    // Compile and load vue templates
     new VueLoaderPlugin()
   ]
 }
