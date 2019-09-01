@@ -1,6 +1,6 @@
 {
     "include": [
-        "./src/**/*", "vue-shim.d.ts"
+        "./src/**/*"
     ],
     "compilerOptions": {
         "outDir": "./dist/",
