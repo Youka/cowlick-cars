@@ -1,5 +1,6 @@
 // Imports
-const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // Return webpack configuration
@@ -8,8 +9,8 @@ module.exports = {
   entry: './src/index.ts',
   // Output file as bundling result
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    path: __dirname + '/dist',
+    filename: '[name].bundle.js'
   },
   // Modules for additional file processing
   module: {
@@ -63,6 +64,11 @@ module.exports = {
   },
   // Webpack plugins for major extension
   plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: "src/index.html",
+      hash: true
+    }),
     new VueLoaderPlugin()
   ]
 }

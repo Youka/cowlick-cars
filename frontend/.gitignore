@@ -3,4 +3,4 @@
 /package-lock.json
 
 # NPM/webpack output
-/dist/bundle.js
+/dist/
