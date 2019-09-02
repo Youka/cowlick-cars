@@ -2,7 +2,7 @@
   <!-- Component layout, managed by vue -->
   <div id="vue-app">
     {{greeting}}<br/>
-    <img v-bind:src="image" />
+    <img src="../assets/images/ayaya.png" />
   </div>
 </template>
 
@@ -14,8 +14,7 @@
   export default Vue.extend({
     data: function() {
       return {
-        greeting: 'Hello World!',
-        image: require('../assets/images/ayaya.png')
+        greeting: 'Hello World!'
       }
     }
   });
