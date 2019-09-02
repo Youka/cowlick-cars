@@ -20,7 +20,6 @@ module.exports = {
       {
         test: /\.(ts|tsx)?$/,
         loader: 'ts-loader',
-        exclude: /node_modules/,
         options: {
           appendTsSuffixTo: [
             /\.vue$/
@@ -36,15 +35,24 @@ module.exports = {
           'sass-loader'
         ]
       },
-      // Bitmaps & fonts
+      // Images
       {
-        test: /\.(png|jpe?g|gif|ttf|woff)$/i,
-        loader: 'file-loader'
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        loader: 'url-loader',
+        options: {
+          limit: 8192,
+          name: "[name].[hash].[ext]",
+          outputPath: "images"
+        }
       },
-      // Vector images
+      // Fonts
       {
-        test: /\.svg$/i,
-        loader: 'url-loader'
+        test: /\.(ttf|woff)$/i,
+        loader: 'file-loader',
+        options: {
+          name: "[name].[hash].[ext]",
+          outputPath: "fonts"
+        }
       },
       // Vue
       {
