@@ -1,16 +1,21 @@
 // Import plugins
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 // Return webpack configuration
 module.exports = {
   // Input file to bundle with all dependencies
   entry: './src/main.ts',
-  // Output file as bundling result
-  output: {
-    path: __dirname + '/dist',
-    filename: '[name].bundle.js'
+  // File extensions to consider by webpack itself
+  resolve: {
+    extensions: [
+      '.js',
+      '.ts',
+      '.tsx',
+      '.vue'
+    ]
   },
   // Modules for additional file processing
   module: {
@@ -31,6 +36,7 @@ module.exports = {
         test: /\.scss$/,
         use: [
           'vue-style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader'
         ]
@@ -61,15 +67,6 @@ module.exports = {
       }
     ]
   },
-  // File extensions to consider by webpack itself
-  resolve: {
-    extensions: [
-      '.js',
-      '.ts',
-      '.tsx',
-      '.vue'
-    ]
-  },
   // Webpack plugins for further processing
   plugins: [
     // Clean possible remainings of last build
@@ -83,6 +80,8 @@ module.exports = {
       // Furthermore add favicon to template
       favicon: "./src/favicon.png"
     }),
+    // Pack resolved CSS into file (instead of default style tags)
+    new MiniCssExtractPlugin(),
     // Compile and load vue templates
     new VueLoaderPlugin()
   ]
