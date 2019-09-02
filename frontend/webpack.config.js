@@ -1,4 +1,4 @@
-// Imports
+// Import plugins
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -6,7 +6,7 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 // Return webpack configuration
 module.exports = {
   // Input file to bundle with all dependencies
-  entry: './src/index.ts',
+  entry: './src/main.ts',
   // Output file as bundling result
   output: {
     path: __dirname + '/dist',
@@ -62,18 +62,18 @@ module.exports = {
       '.vue'
     ]
   },
-  // Webpack plugins for major extension
+  // Webpack plugins for further processing
   plugins: [
     // Clean possible remainings of last build
     new CleanWebpackPlugin(),
     // Generate one-and-only html file to be processed by javascript bundle
     new HtmlWebpackPlugin({
       // File to extend by js & css resources
-      template: "src/index.html",
+      template: "./src/index.html",
       // All resource requests with hash parameter to develop around caches
       hash: true,
       // Furthermore add favicon to template
-      favicon: "src/favicon.png"
+      favicon: "./src/favicon.png"
     }),
     // Compile and load vue templates
     new VueLoaderPlugin()

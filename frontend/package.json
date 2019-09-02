@@ -14,7 +14,7 @@
   "homepage": "https://github.com/Youka/cowlick-cars",
   "bugs": "https://github.com/Youka/cowlick-cars/issues",
   "license": "MIT",
-  "browser": "index.js",
+  "browser": "window",
   "scripts": {
     "build-dev": "webpack -d --mode development",
     "build-prod": "webpack -p --mode production"

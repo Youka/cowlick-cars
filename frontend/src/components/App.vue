@@ -1,6 +1,6 @@
 <template>
   <!-- Component layout, managed by vue -->
-  <div>
+  <div id="vue-app">
     {{name}}
   </div>
 </template>
@@ -20,13 +20,7 @@
 </script>
 
 <style lang="scss">
-  /* Constants */
-  $primary-color: white;
-  $bg: black;
-  
-  /* Document body */
-  body {
-    color: $primary-color;
-    background-color: $bg;
+  #vue-app {
+    text-decoration: underline;
   }
 </style>
