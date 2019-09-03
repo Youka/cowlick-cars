@@ -17,7 +17,8 @@
   "browser": "window",
   "scripts": {
     "build-dev": "webpack -d --mode development",
-    "build-prod": "webpack -p --mode production"
+    "build-prod": "webpack -p --mode production",
+    "watch": "webpack -d --mode development --watch"
   },
   "dependencies": {
     "vue": "^2.6.10",

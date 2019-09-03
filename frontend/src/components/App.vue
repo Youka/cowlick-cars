@@ -14,7 +14,7 @@
   export default Vue.extend({
     data: function() {
       return {
-        greeting: 'Hello World!'
+        greeting: 'Hello world!'
       }
     }
   });
