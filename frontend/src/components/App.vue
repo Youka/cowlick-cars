@@ -1,7 +1,7 @@
 <template>
   <!-- Component layout, managed by vue -->
   <div id="vue-app">
-    {{greeting}}<br/>
+    {{message}}<br/>
     <img src="../assets/images/ayaya.png" />
   </div>
 </template>
@@ -14,14 +14,23 @@
   export default Vue.extend({
     data: function() {
       return {
-        greeting: 'Hello world!'
+        message: 'Hello world! \ue6a8'
       }
     }
   });
 </script>
 
 <style lang="scss">
+  @font-face {
+    font-family: 'devicons';
+    src: url('../assets/fonts/devicons/devicons.ttf') format('truetype'),
+      url('../assets/fonts/devicons/devicons.woff') format('woff'),
+      url('../assets/fonts/devicons/devicons.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   #vue-app {
-    text-decoration: underline;
+    font-family: 'devicons';
   }
 </style>

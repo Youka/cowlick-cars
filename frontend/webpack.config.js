@@ -53,7 +53,7 @@ module.exports = {
       },
       // Fonts
       {
-        test: /\.(ttf|woff)$/i,
+        test: /\.(ttf|woff2?|eot)$/i,
         loader: 'file-loader',
         options: {
           name: "[name].[hash].[ext]",
