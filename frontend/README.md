@@ -6,6 +6,7 @@ Frontend of cowlick-cars management platform.
 * Build:
     * Development: `npm run build-dev`
     * Production: `npm run build-prod`
+    * Watch (development): `npm run watch`
 
 ## Credits
-Made with [createapp.dev](https://createapp.dev/)
+Templated from [createapp.dev](https://createapp.dev/) .
