@@ -13,7 +13,6 @@ module.exports = {
     extensions: [
       '.js',
       '.ts',
-      '.tsx',
       '.vue'
     ]
   },
@@ -21,9 +20,15 @@ module.exports = {
   module: {
     // Invoke loaders by file extensions
     rules: [
+      // Javascript
+      {
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
       // Typescript
       {
-        test: /\.(ts|tsx)?$/,
+        test: /\.ts$/,
         loader: 'ts-loader',
         options: {
           appendTsSuffixTo: [
@@ -33,7 +38,7 @@ module.exports = {
       },
       // SASS
       {
-        test: /\.scss$/,
+        test: /\.(css|scss|sass)$/,
         use: [
           'vue-style-loader',
           MiniCssExtractPlugin.loader,
