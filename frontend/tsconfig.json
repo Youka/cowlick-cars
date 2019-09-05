@@ -12,6 +12,6 @@
         "moduleResolution": "node",
         "target": "es5",
         "allowJs": true,
-        "types": ["node", "vuetify"]
+        "types": ["vuetify"]
     }
 }
