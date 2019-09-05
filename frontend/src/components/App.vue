@@ -1,9 +1,11 @@
 <template>
-  <!-- Component layout, managed by vue -->
-  <div id="vue-app">
-    {{message}}<br/>
-    <img src="../assets/images/ayaya.png" />
-  </div>
+  <!-- Vue-managed site layout -->
+  <v-app>
+    <v-form>
+      <v-text-field v-bind:label="message" />
+    </v-form>
+    <img src="../assets/images/ayaya.png" width=100 />
+  </v-app>
 </template>
 
 <script lang="ts">
@@ -15,22 +17,14 @@
     data: function() {
       return {
         message: 'Hello world! \ue6a8'
-      }
+      };
     }
   });
 </script>
 
 <style lang="scss">
-  @font-face {
-    font-family: 'devicons';
-    src: url('../assets/fonts/devicons/devicons.ttf') format('truetype'),
-      url('../assets/fonts/devicons/devicons.woff') format('woff'),
-      url('../assets/fonts/devicons/devicons.eot') format('embedded-opentype');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  #vue-app {
+  /* Application default font */
+  #app {
     font-family: 'devicons';
   }
 </style>

@@ -1,9 +1,12 @@
 /* Constants */
-$primary-color: white;
-$bg: black;
+$devicons-font-folder: 'assets/fonts/devicons/';
 
-/* Document body */
-body {
-    color: $primary-color;
-    background-color: $bg;
+/* Register fonts */
+@font-face {
+    font-family: 'devicons';
+    src: url($devicons-font-folder + 'devicons.ttf') format('truetype'),
+      url($devicons-font-folder + 'devicons.woff') format('woff'),
+      url($devicons-font-folder + 'devicons.eot') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
 }
