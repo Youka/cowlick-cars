@@ -4,8 +4,7 @@ Frontend of cowlick-cars management platform.
 ## Building and running on localhost
 * Install dependencies: `npm install`
 * Build:
-    * Development: `npm run build-dev`
-    * Production: `npm run build-prod`
+    * Production: `npm run build`
     * Watch (development): `npm run watch`
 
 ## Credits
