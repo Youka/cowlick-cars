@@ -36,9 +36,18 @@ module.exports = {
           ]
         }
       },
+      // CSS
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader'
+        ]
+      },
       // SASS
       {
-        test: /\.(css|scss|sass)$/,
+        test: /\.s(c|a)ss$/,
         use: [
           'vue-style-loader',
           MiniCssExtractPlugin.loader,
