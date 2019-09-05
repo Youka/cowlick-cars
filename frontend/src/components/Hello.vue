@@ -1,8 +1,8 @@
 <template>
-  <v-form>
-    <v-text-field v-bind:label="message" />
+  <form>
+    {{message}}
     <img src="../assets/images/ayaya.png" width=100 />
-  </v-form>
+  </form>
 </template>
 
 <script lang="ts">
