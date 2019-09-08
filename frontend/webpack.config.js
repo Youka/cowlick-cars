@@ -3,6 +3,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 
 // Return webpack configuration
 module.exports = {
@@ -97,6 +98,13 @@ module.exports = {
     // Pack resolved CSS into file (instead of default style tags)
     new MiniCssExtractPlugin(),
     // Compile and load vue templates
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    // Compress output to save bandwidth
+    new CompressionPlugin({
+      // Don't process already tiny files
+      threshold: 4096,
+      // Faster re-builds
+      cache: true
+    })
   ]
 }
