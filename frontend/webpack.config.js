@@ -95,9 +95,9 @@ module.exports = {
       // Furthermore add favicon to template
       favicon: "./src/favicon.png"
     }),
-    // Pack resolved CSS into file (instead of default style tags)
+    // Pack resolved CSS into file (instead of multiple style tags by default)
     new MiniCssExtractPlugin(),
-    // Compile and load vue templates
+    // Compile and load vue templates (=split contents)
     new VueLoaderPlugin(),
     // Compress output to save bandwidth
     new CompressionPlugin({
