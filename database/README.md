@@ -1,4 +1,4 @@
-# Cowlick cars - database
+# Cowlick cars - database migration
 *TODO*
 
 * PostgreSQL

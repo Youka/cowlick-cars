@@ -1,4 +1,4 @@
-# Cowlick cars - backend
+# Cowlick cars - server configuration & services
 *TODO*
 
 * OpenJDK 8

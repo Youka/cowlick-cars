@@ -1,4 +1,4 @@
-# Cowlick-cars web application
+# Cowlick cars - web application
 Frontend of cowlick-cars management platform.
 
 ## Building
