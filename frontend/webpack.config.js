@@ -25,6 +25,11 @@ module.exports = {
       {
         test: /\.js$/,
         loader: 'babel-loader',
+        options: {
+          presets: ["@babel/preset-env"],
+          modules: false,
+          cacheDirectory: true
+        },
         exclude: /node_modules/
       },
       // Typescript
@@ -32,9 +37,7 @@ module.exports = {
         test: /\.ts$/,
         loader: 'ts-loader',
         options: {
-          appendTsSuffixTo: [
-            /\.vue$/
-          ]
+          appendTsSuffixTo: [/\.vue$/]
         }
       },
       // CSS
