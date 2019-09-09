@@ -1,5 +1,5 @@
-# NPM dependencies cache
+# Yarn dependencies cache
 /node_modules/
 
-# NPM/webpack output
+# Yarn/webpack output
 /dist/

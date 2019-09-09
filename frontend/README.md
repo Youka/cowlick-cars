@@ -1,11 +1,11 @@
-# cowlick-cars_webapp
+# Cowlick-cars web application
 Frontend of cowlick-cars management platform.
 
-## Building and running on localhost
-* Install dependencies: `npm install`
+## Building
+* Install dependencies: `yarn install`
 * Build:
-    * Production: `npm run build`
-    * Watch (development): `npm run watch`
+    * Production: `yarn build`
+    * Watch (development): `yarn watch`
 
 ## Credits
 Templated from [createapp.dev](https://createapp.dev/) .

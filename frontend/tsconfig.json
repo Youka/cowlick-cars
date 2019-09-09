@@ -9,8 +9,8 @@
         "noImplicitReturns": true,
         "noImplicitAny": true,
         "module": "es6",
-        "moduleResolution": "node",
         "target": "es5",
+        "moduleResolution": "node",
         "allowJs": true
     }
 }
