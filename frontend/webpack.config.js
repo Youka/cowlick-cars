@@ -1,5 +1,6 @@
 // Import plugins
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const TSLintPlugin = require('tslint-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -89,6 +90,11 @@ module.exports = {
   plugins: [
     // Clean possible remainings of last build
     new CleanWebpackPlugin(),
+    // Lint typescript files
+    new TSLintPlugin({
+      // Process same as 'tsconfig.json'
+      files: ['./src/**/*.ts']
+    }),
     // Generate one-and-only html file to be processed by javascript bundle
     new HtmlWebpackPlugin({
       // File to extend by js & css resources
