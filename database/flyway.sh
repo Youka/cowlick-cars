@@ -29,7 +29,7 @@ if type java >/dev/null 2>&1; then
 elif [ ! -z $JAVA_HOME ]; then
 	JAVA_CMD=$JAVA_HOME/bin/java
 else
-	echo Java not found! Add to PATH or set JAVA_HOME. 1>&2
+	echo Java not found! Add binary to PATH or set JAVA_HOME. 1>&2
 	exit 1
 fi
 
