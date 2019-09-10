@@ -1,2 +1,5 @@
 # Flyway classes
 /flyway/classes/*.jar
+
+# Flyway configuration
+/flyway/flyway.config
