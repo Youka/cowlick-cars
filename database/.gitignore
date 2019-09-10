@@ -1,5 +1,6 @@
 # Flyway classes
-/flyway/classes/*.jar
+/flyway/runtime/*.jar
+/flyway/drivers/*.jar
 
 # Flyway configuration
 /flyway/flyway.config

@@ -6,14 +6,16 @@ POSTGRESQL_VERSION=42.2.6
 
 # File locations
 SCRIPT_DIR=$(dirname $0)
-CLASSES_DIR=$SCRIPT_DIR/flyway/classes
-MIGRATIONS_DIR=$SCRIPT_DIR/flyway/migrations
-FLYWAY_CONFIG_FILE=$SCRIPT_DIR/flyway/flyway.config
+FLYWAY_DIR=$SCRIPT_DIR/flyway
+RUNTIME_DIR=$FLYWAY_DIR/runtime
+DRIVERS_DIR=$FLYWAY_DIR/drivers
+MIGRATIONS_DIR=$FLYWAY_DIR/migrations
+FLYWAY_CONFIG_FILE=$FLYWAY_DIR/flyway.config
 MAVEN_CENTRAL_URL=https://repo1.maven.org/maven2
 declare -A FILE_DOWNLOADS=(
-	[$CLASSES_DIR/flyway-core-$FLYWAY_VERSION.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-core/$FLYWAY_VERSION/flyway-core-$FLYWAY_VERSION.jar
-	[$CLASSES_DIR/flyway-commandline-$FLYWAY_VERSION.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-commandline/$FLYWAY_VERSION/flyway-commandline-$FLYWAY_VERSION.jar
-	[$CLASSES_DIR/postgresql-$POSTGRESQL_VERSION.jar]=$MAVEN_CENTRAL_URL/org/postgresql/postgresql/$POSTGRESQL_VERSION/postgresql-$POSTGRESQL_VERSION.jar
+	[$RUNTIME_DIR/flyway-core-$FLYWAY_VERSION.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-core/$FLYWAY_VERSION/flyway-core-$FLYWAY_VERSION.jar
+	[$RUNTIME_DIR/flyway-commandline-$FLYWAY_VERSION.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-commandline/$FLYWAY_VERSION/flyway-commandline-$FLYWAY_VERSION.jar
+	[$DRIVERS_DIR/postgresql-$POSTGRESQL_VERSION.jar]=$MAVEN_CENTRAL_URL/org/postgresql/postgresql/$POSTGRESQL_VERSION/postgresql-$POSTGRESQL_VERSION.jar
 )
 
 # Download dependencies
@@ -34,4 +36,4 @@ else
 fi
 
 # Run migrations (see <https://flywaydb.org/documentation/commandline/>)
-$JAVA_CMD -cp "$CLASSES_DIR/*" org.flywaydb.commandline.Main -jarDirs=$CLASSES_DIR -locations=filesystem:$MIGRATIONS_DIR -installedBy=$(hostname) -configFiles=$FLYWAY_CONFIG_FILE $*
+$JAVA_CMD -cp "$RUNTIME_DIR/*" org.flywaydb.commandline.Main -jarDirs=$DRIVERS_DIR -locations=filesystem:$MIGRATIONS_DIR -installedBy=$(hostname) -configFiles=$FLYWAY_CONFIG_FILE $*
