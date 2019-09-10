@@ -34,4 +34,4 @@ else
 fi
 
 # Run migrations (see <https://flywaydb.org/documentation/commandline/>)
-$JAVA_CMD -cp "$CLASSES_DIR/*" org.flywaydb.commandline.Main -jarDirs=$CLASSES_DIR -locations=filesystem:$MIGRATIONS_DIR -configFiles=$FLYWAY_CONFIG_FILE $*
+$JAVA_CMD -cp "$CLASSES_DIR/*" org.flywaydb.commandline.Main -jarDirs=$CLASSES_DIR -locations=filesystem:$MIGRATIONS_DIR -installedBy=$(hostname) -configFiles=$FLYWAY_CONFIG_FILE $*
