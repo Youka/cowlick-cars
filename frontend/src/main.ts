@@ -17,7 +17,7 @@ import "whatwg-fetch";
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-// Mount Vue instance of application
+// Mount Vue instance for application
 const vueApp = new Vue({
   el: "#app", // Hook root element
   render: (createElement) => createElement(App), // Render root element

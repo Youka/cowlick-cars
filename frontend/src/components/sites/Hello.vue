@@ -3,7 +3,7 @@
     {{message}}
     <button v-on:click="increment">Increment counter</button>
     {{count}}
-    <img src="../assets/images/ayaya.png" width=100 />
+    <img src="../../assets/images/ayaya.png" width=100 />
   </form>
 </template>
 
@@ -20,10 +20,10 @@
     }),
     // Map shared data store into component
     computed: mapGetters([
-      'count'
+      "count"
     ]),
     methods: mapMutations([
-      'increment'
+      "increment"
     ])
   });
 </script>

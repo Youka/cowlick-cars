@@ -1,5 +1,5 @@
-import Home from "../components/Home.vue";
-import Hello from "../components/Hello.vue";
+import Home from "../components/sites/Home.vue";
+import Hello from "../components/sites/Hello.vue";
 
 export default [
     {path: "/", component: Home},
