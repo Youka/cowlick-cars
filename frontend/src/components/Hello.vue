@@ -1,6 +1,8 @@
 <template>
   <form>
     {{message}}
+    <button v-on:click="increment">Increment counter</button>
+    {{count}}
     <img src="../assets/images/ayaya.png" width=100 />
   </form>
 </template>
@@ -8,13 +10,20 @@
 <script lang="ts">
   // Imports
   import Vue from "vue";
+  import {mapGetters, mapMutations} from "vuex";
 
   // Extend vue instance of component
   export default Vue.extend({
-    data: function() {
-      return {
-        message: 'Hello world! \ue6a8'
-      };
-    }
+    // Component data
+    data: () => ({
+      message: "Hello world! \ue6a8"
+    }),
+    // Map shared data store into component
+    computed: mapGetters([
+      'count'
+    ]),
+    methods: mapMutations([
+      'increment'
+    ])
   });
 </script>

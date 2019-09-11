@@ -4,6 +4,7 @@
     "rules": {
         "eofline": false,
         "ordered-imports": false,
+        "object-literal-sort-keys": false,
         "trailing-comma": false
     }
 }
