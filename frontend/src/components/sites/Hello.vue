@@ -3,6 +3,7 @@
     {{message}}
     <input type="button" value="Increment counter" v-on:click="increment" />
     {{count}}
+    <input type="button" value="Fetch Github API" v-on:click="fetchGithubApi" />
     <img src="../../assets/images/ayaya.png" width=100 />
   </form>
 </template>
@@ -22,8 +23,11 @@
     computed: mapGetters([
       "count"
     ]),
-    methods: mapMutations([
-      "increment"
-    ])
+    methods: {
+      ...mapMutations([
+        "increment"
+      ]),
+      fetchGithubApi: () => fetch("https://api.github.com/").then((response) => response.text()).then((data) => alert(data))
+    }
   });
 </script>
