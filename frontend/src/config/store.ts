@@ -3,9 +3,9 @@ export default {
         count: 0
     },
     getters: {
-        count: (state: {count: number}) => state.count
+        count: (state: any) => state.count
     },
     mutations: {
-        increment: (state: {count: number}) => state.count++
+        increment: (state: any) => state.count++
     }
 };

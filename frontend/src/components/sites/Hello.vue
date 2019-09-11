@@ -1,7 +1,7 @@
 <template>
   <form>
     {{message}}
-    <button v-on:click="increment">Increment counter</button>
+    <input type="button" value="Increment counter" v-on:click="increment" />
     {{count}}
     <img src="../../assets/images/ayaya.png" width=100 />
   </form>
