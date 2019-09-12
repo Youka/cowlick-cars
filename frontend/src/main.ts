@@ -9,10 +9,6 @@ import store from "./config/store";
 // Embed global style
 import "./main.scss";
 
-// Register polyfills
-import "promise-polyfill/src/polyfill";
-import "whatwg-fetch";
-
 // Extend Vue by plugins
 Vue.use(VueRouter);
 Vue.use(Vuex);
