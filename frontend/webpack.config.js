@@ -31,7 +31,7 @@ module.exports = {
           presets: ["@babel/preset-env"],
           cacheDirectory: true
         },
-        exclude: /node_modules/
+        exclude: /node_modules\/(?!vuetify)/
       },
       // Typescript
       {
