@@ -1,5 +1,6 @@
-# Yarn dependencies cache
+# NPM dependencies cache
 /node_modules/
+/package-lock.json
 
-# Yarn/webpack output
+# NPM/webpack output
 /dist/

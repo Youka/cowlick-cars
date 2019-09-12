@@ -2,10 +2,10 @@
 Frontend of cowlick-cars management platform.
 
 ## Building
-* Install dependencies: `yarn install`
+* Install dependencies: `npm install`
 * Build:
-    * Production: `yarn build`
-    * Watch (development): `yarn watch`
+    * Production: `npm run build`
+    * Watch (development): `npm run watch`
 
 ## Credits
 Templated from [createapp.dev](https://createapp.dev/) .
