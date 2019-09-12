@@ -1,17 +1,17 @@
 <template>
   <!-- Vue-managed page layout -->
-  <div id="vue-app">
-    <nav>
+  <v-app>
+    <v-card>
       <router-link to="/">Home</router-link>
       <router-link to="/hello">Hello</router-link>
-    </nav>
+    </v-card>
     <router-view></router-view>
-  </div>
+  </v-app>
 </template>
 
 <style lang="scss">
   /* Application default font */
-  #vue-app {
+  #app {
     font-family: 'devicons';
   }
 </style>
