@@ -1,11 +1,9 @@
 <template>
-  <form>
-    {{message}}
-    <input type="button" value="Increment counter" v-on:click="increment" />
-    {{count}}
-    <input type="button" value="Fetch Github API" v-on:click="fetchGithubApi" />
-    <img src="../../assets/images/ayaya.png" width=100 />
-  </form>
+  <v-form>
+    <v-text-field v-model="count" label="Counter" readonly outlined ></v-text-field>
+    <v-btn v-on:click="increment">Increment counter</v-btn>
+    <v-btn v-on:click="fetchGithubApi">Fetch Github API</v-btn>
+  </v-form>
 </template>
 
 <script lang="ts">
@@ -15,10 +13,6 @@
 
   // Extend vue instance of component
   export default Vue.extend({
-    // Component data
-    data: () => ({
-      message: "Hello world! \ue6a8"
-    }),
     // Map shared data store into component
     computed: mapGetters([
       "count"
