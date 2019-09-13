@@ -31,7 +31,7 @@ module.exports = {
           presets: ["@babel/preset-env"],
           cacheDirectory: true
         },
-        exclude: /node_modules\/(?!vuetify)/
+        exclude: /node_modules\/(?!vuetify)/  // Transpile Vuetify for edge support
       },
       // Typescript
       {
@@ -117,5 +117,19 @@ module.exports = {
       // Faster re-builds
       cache: true
     })
-  ]
+  ],
+  // Watch mode behaviour
+  watchOptions: {
+    // Reduce cycles (=less CPU load)
+    aggregateTimeout: 500,
+    // Ignore dependencies
+    ignored: /node_modules/
+  },
+  // Modify performance hints
+  performance: {
+    // Each entry point <500kb
+    maxEntrypointSize: 500000,
+    // Each asset <2mb
+    maxAssetSize: 2000000
+  }
 }
