@@ -27,7 +27,8 @@
       ...mapMutations([
         "increment"
       ]),
-      fetchGithubApi: () => fetch("https://api.github.com/").then((response) => response.text()).then((data) => alert(data))
+      fetchGithubApi: () =>
+        fetch("https://api.github.com/").then((response) => response.text()).then((data) => alert(data))
     }
   });
 </script>
