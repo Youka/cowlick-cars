@@ -97,11 +97,13 @@ module.exports = {
     new CleanWebpackPlugin(),
     // Generate one-and-only html file to be processed by javascript bundle
     new HtmlWebpackPlugin({
-      // File to extend by js & css resources
-      template: "./src/index.html",
+      // HTML template to extend by js+css resources and parameters
+      template: "./src/index.ejs",
+      // Provide project configuration as template parameters
+      templateParameters: require("./package.json"),
       // Add favicon to template
       favicon: "./src/favicon.png",
-      // All resource requests with hash parameter to develop around caches
+      // Add hash to resource requests to develop around caches
       hash: true
     }),
     // Pack resolved CSS into file (instead of multiple style tags by default)
