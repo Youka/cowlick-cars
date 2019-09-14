@@ -26,6 +26,6 @@
 <style lang="scss">
   /* Application default font */
   #app {
-    font-family: 'devicons';
+    font-family: 'Open Sans';
   }
 </style>

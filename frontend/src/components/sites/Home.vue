@@ -14,7 +14,7 @@
 
   export default Vue.extend({
     data: () => ({
-      message: "Hello world! \ue6a8"
+      message: "Hello world!"
     })
   });
 </script>
