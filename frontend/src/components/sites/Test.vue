@@ -2,7 +2,7 @@
   <v-form>
     <v-text-field v-model="count" label="Counter" readonly outlined ></v-text-field>
     <v-btn v-on:click="increment">Increment counter</v-btn>
-    <v-btn v-on:click="fetchGithubApi">Fetch Github API</v-btn>
+    <v-btn v-on:click="fetchGithubApi">Fetch Github API<v-icon right>mdi-cloud-download</v-icon></v-btn>
   </v-form>
 </template>
 
