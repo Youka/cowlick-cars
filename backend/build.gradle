@@ -1,0 +1,23 @@
+// Project information
+description = "Root project of cowlick-cars backend."
+// Artifact information
+version = "1.0-SNAPSHOT"
+
+// Apply for all projects in hierarchy
+allprojects {
+	// Artifact information
+	group = "com.cowlick-cars"
+	// Source repositories for dependencies & plugins
+	repositories {
+		mavenCentral()
+	}
+	// Enable java-based dependencies system
+	apply plugin: "java"
+	// Dependencies management for sub-projects
+	dependencies {
+		compileOnly "org.jetbrains.kotlin:kotlin-stdlib:${property 'kotlin-stdlib.version'}"
+	}
+}
+
+// Tasks to execute by missing input
+defaultTasks = ["projects", "dependencies"]

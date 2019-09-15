@@ -1,0 +1,6 @@
+# IntelliJ IDEA project & output
+/.idea/
+/out/
+# Gradle cache & output
+/.gradle/
+/build/
