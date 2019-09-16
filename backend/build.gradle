@@ -7,6 +7,9 @@ version = "1.0-SNAPSHOT"
 allprojects {
 	// Artifact information
 	group = "com.cowlick-cars"
+}
+// Apply for all sub-projects (of this/root)
+subprojects {
 	// Source repositories for dependencies & plugins
 	repositories {
 		mavenCentral()
@@ -20,4 +23,4 @@ allprojects {
 }
 
 // Tasks to execute by missing input
-defaultTasks = ["projects", "dependencies"]
+defaultTasks = ["projects"]

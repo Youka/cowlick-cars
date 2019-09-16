@@ -1,0 +1,7 @@
+task copyServerRuntime() {
+	configurations.compileOnly.resolvedConfiguration.resolvedArtifacts.each {
+		println "Id: " + it.id
+		println "File path: " + it.file.path
+		println "---"
+	}
+}
