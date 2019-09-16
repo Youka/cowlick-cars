@@ -12,9 +12,9 @@ MIGRATIONS_DIR=$FLYWAY_DIR/migrations
 FLYWAY_CONFIG_FILE=$FLYWAY_DIR/flyway.config
 MAVEN_CENTRAL_URL=https://repo1.maven.org/maven2
 declare -A FILE_DOWNLOADS=(
-	[$RUNTIME_DIR/flyway-core-$FLYWAY_VERSION.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-core/$FLYWAY_VERSION/flyway-core-$FLYWAY_VERSION.jar
-	[$RUNTIME_DIR/flyway-commandline-$FLYWAY_VERSION.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-commandline/$FLYWAY_VERSION/flyway-commandline-$FLYWAY_VERSION.jar
-	[$DRIVERS_DIR/postgresql-$POSTGRESQL_VERSION.jar]=$MAVEN_CENTRAL_URL/org/postgresql/postgresql/$POSTGRESQL_VERSION/postgresql-$POSTGRESQL_VERSION.jar
+	[$RUNTIME_DIR/flyway-core.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-core/$FLYWAY_VERSION/flyway-core-$FLYWAY_VERSION.jar
+	[$RUNTIME_DIR/flyway-commandline.jar]=$MAVEN_CENTRAL_URL/org/flywaydb/flyway-commandline/$FLYWAY_VERSION/flyway-commandline-$FLYWAY_VERSION.jar
+	[$DRIVERS_DIR/postgresql.jar]=$MAVEN_CENTRAL_URL/org/postgresql/postgresql/$POSTGRESQL_VERSION/postgresql-$POSTGRESQL_VERSION.jar
 )
 
 # Download dependencies
