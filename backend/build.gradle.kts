@@ -15,12 +15,13 @@ subprojects {
 		mavenCentral()
 	}
 	// Enable java-based dependencies system
-	apply plugin: "java"
+	apply(plugin = "java")
 	// Dependencies management for sub-projects
 	dependencies {
-		compileOnly "org.jetbrains.kotlin:kotlin-stdlib:${property 'kotlin-stdlib.version'}"
+		val compileOnly by configurations
+		compileOnly("org.jetbrains.kotlin:kotlin-stdlib:${properties["kotlin-stdlib.version"]}")
 	}
 }
 
 // Tasks to execute by missing input
-defaultTasks = ["projects"]
+defaultTasks = mutableListOf("projects")
