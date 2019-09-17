@@ -24,4 +24,4 @@ subprojects {
 }
 
 // Tasks to execute by missing input
-defaultTasks = mutableListOf("projects")
+defaultTasks = mutableListOf("projects", "tasks")

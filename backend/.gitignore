@@ -3,4 +3,4 @@
 /out/
 # Gradle cache & output
 /.gradle/
-/build/
+/**/build/
