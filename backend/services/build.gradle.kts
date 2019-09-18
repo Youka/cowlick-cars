@@ -21,12 +21,12 @@ subprojects {
 				val catalinaHome = System.getenv("CATALINA_HOME") ?: throw GradleException("Environment variable CATALINA_HOME expected!")
 				logger.quiet("CATALINA_HOME: $catalinaHome")
 				// Source
-				val sourceDir = projectDir.resolve("build").resolve("libs")
+				val sourceDir = tasks.named<War>("war").get().archiveFile.get()
 				logger.quiet("From $sourceDir...")
 				from(sourceDir)
 				// Destination
 				val destinationDir = File(catalinaHome).resolve("webapps")
-				logger.quiet("...into ${destinationDir.absolutePath}")
+				logger.quiet("...into $destinationDir")
 				into(destinationDir)
 			}
 		}

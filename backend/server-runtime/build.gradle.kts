@@ -1,7 +1,8 @@
 tasks.register("copyServerRuntime") {
 	group = project.name
 	description = "Copy artifacts to build directory."
-	doFirst {
+	dependsOn("clean")
+	doLast {
 		copy {
 			// Sources
 			configurations.compileOnly.get().resolvedConfiguration.resolvedArtifacts.forEach { artifact ->
@@ -9,9 +10,8 @@ tasks.register("copyServerRuntime") {
 				from(artifact.file)
 			}
 			// Destination
-			val destinationDir = projectDir.resolve("build")
-			logger.quiet("...into ${destinationDir.absolutePath}")
-			into(destinationDir)
+			logger.quiet("...into $buildDir")
+			into(buildDir)
 		}
 	}
 }
@@ -26,12 +26,11 @@ tasks.register("deployTomcatRuntime") {
 			val catalinaHome = System.getenv("CATALINA_HOME") ?: throw GradleException("Environment variable CATALINA_HOME expected!")
 			logger.quiet("CATALINA_HOME: $catalinaHome")
 			// Source
-			val sourceDir = projectDir.resolve("build")
-			logger.quiet("From $sourceDir...")
-			from(sourceDir)
+			logger.quiet("From $buildDir...")
+			from(buildDir)
 			// Destination
 			val destinationDir = File(catalinaHome).resolve("lib")
-			logger.quiet("...into ${destinationDir.absolutePath}")
+			logger.quiet("...into $destinationDir")
 			into(destinationDir)
 		}
 	}
