@@ -18,7 +18,7 @@ tasks.register("copyServerRuntime") {
 
 tasks.register("deployTomcatRuntime") {
 	group = project.name
-	description = "Copy artifacts to tomcat extra libraries directory."
+	description = "Copy artifacts to tomcat libraries directory."
 	dependsOn("copyServerRuntime")
 	doLast {
 		copy {
@@ -30,7 +30,7 @@ tasks.register("deployTomcatRuntime") {
 			logger.quiet("From $sourceDir...")
 			from(sourceDir)
 			// Destination
-			val destinationDir = File(catalinaHome).resolve("lib").resolve("ext")
+			val destinationDir = File(catalinaHome).resolve("lib")
 			logger.quiet("...into ${destinationDir.absolutePath}")
 			into(destinationDir)
 		}

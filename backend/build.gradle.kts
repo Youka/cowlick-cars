@@ -20,12 +20,6 @@ subprojects {
 		compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")	// Version provided by plugin
 	}
 }
-project("services").subprojects {
-	apply(plugin = "war")
-	dependencies {
-		compileOnly("javax.servlet:javax.servlet-api:4.0.1")
-	}
-}
 
 // Tasks to execute by missing input (available projects & task)
 defaultTasks = mutableListOf("projects", "tasks")
