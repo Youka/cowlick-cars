@@ -1,27 +1,29 @@
 // Project information
 description = "Root project of cowlick-cars backend."
-// Artifact information
 version = "1.0-SNAPSHOT"
 
-// Apply for all projects in hierarchy
-allprojects {
-	// Artifact information
-	group = "com.cowlick-cars"
+// Import global plugins
+plugins {
+	kotlin("jvm").version("1.3.50")
 }
-// Apply for all sub-projects (of this/root)
-subprojects {
-	// Source repositories for dependencies & plugins
+
+// Apply for multiple projects
+allprojects {
+	group = "com.cowlick-cars"
 	repositories {
 		mavenCentral()
 	}
-	// Enable java-based dependencies system
-	apply(plugin = "java")
-	// Dependencies management for sub-projects
+}
+subprojects {
+	apply(plugin = "kotlin")
 	dependencies {
-		val compileOnly by configurations
-		compileOnly("org.jetbrains.kotlin:kotlin-stdlib:${properties["kotlin-stdlib.version"]}")
+		compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")	// Version provided by plugin
+	}
+}
+project("services").subprojects {
+	dependencies {
 	}
 }
 
-// Tasks to execute by missing input
+// Tasks to execute by missing input (available projects & task)
 defaultTasks = mutableListOf("projects", "tasks")
