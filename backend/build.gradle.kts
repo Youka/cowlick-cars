@@ -21,7 +21,9 @@ subprojects {
 	}
 }
 project("services").subprojects {
+	apply(plugin = "war")
 	dependencies {
+		compileOnly("javax.servlet:javax.servlet-api:4.0.1")
 	}
 }
 
