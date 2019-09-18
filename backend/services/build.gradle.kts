@@ -8,9 +8,6 @@ subprojects {
 	tasks.named<War>("war") {
 		archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
 	}
-	dependencies {
-		compileOnly("javax.servlet:javax.servlet-api:4.0.1")
-	}
 	tasks.register("deployTomcatService") {
 		group = project.name
 		description = "Copy ${project.name} to tomcat web applications directory."
@@ -30,5 +27,8 @@ subprojects {
 				into(destinationDir)
 			}
 		}
+	}
+	dependencies {
+		compileOnly("javax.servlet:javax.servlet-api:4.0.1")
 	}
 }

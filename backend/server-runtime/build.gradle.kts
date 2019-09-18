@@ -1,3 +1,8 @@
+// Project information
+description = "Runtime packager for cowlick-cars server."
+version = "1.0-SNAPSHOT"
+
+// Tasks
 tasks.register("copyServerRuntime") {
 	group = project.name
 	description = "Copy artifacts to build directory."
