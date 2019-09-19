@@ -29,6 +29,6 @@ subprojects {
 		}
 	}
 	dependencies {
-		compileOnly("javax.servlet:javax.servlet-api:4.0.1")
+		compileOnly("javax.servlet:javax.servlet-api:${properties["servlet-api.version"]}")
 	}
 }

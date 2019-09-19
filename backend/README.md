@@ -1,5 +1,5 @@
 # Cowlick cars - server configuration & services
 *TODO*
 
-* Jersey + Jackson
-* MyBatis
+* JAX-RS + JSON
+* MyBatis + PostgreSQL JDBC driver
