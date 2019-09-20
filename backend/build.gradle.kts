@@ -17,10 +17,15 @@ allprojects {
 subprojects {
 	apply(plugin = "kotlin")
 	dependencies {
+		// Kotlin
 		compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")	// Version provided by plugin
 		compileOnly("org.jetbrains.kotlin:kotlin-reflect")	// Version provided by plugin
+		// REST
 		compileOnly("org.springframework:spring-webmvc:${properties["spring.version"]}")
 		compileOnly("com.fasterxml.jackson.core:jackson-databind:${properties["jackson.version"]}")
+		// Data
+		compileOnly("org.springframework:spring-jdbc:${properties["spring.version"]}")
+		compileOnly("org.postgresql:postgresql:${properties["postgresql.version"]}")
 	}
 }
 
