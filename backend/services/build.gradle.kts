@@ -2,10 +2,16 @@
 description = "Services management project."
 version = "1.0-SNAPSHOT"
 
+// Resources
+val serviceWebXml = projectDir.resolve("web.xml")
+val serviceSpringXml = projectDir.resolve("spring.xml")
+
 // Apply for multiple projects
 subprojects {
 	apply(plugin = "war")
 	tasks.named<War>("war") {
+		webXml = serviceWebXml
+		webInf.from(serviceSpringXml)
 		archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
 	}
 	tasks.register("deployTomcatService") {
@@ -27,8 +33,5 @@ subprojects {
 				into(destinationDir)
 			}
 		}
-	}
-	dependencies {
-		compileOnly("javax.servlet:javax.servlet-api:${properties["servlet-api.version"]}")
 	}
 }
