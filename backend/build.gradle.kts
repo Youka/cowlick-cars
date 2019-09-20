@@ -18,6 +18,7 @@ subprojects {
 	apply(plugin = "kotlin")
 	dependencies {
 		compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")	// Version provided by plugin
+		compileOnly("org.jetbrains.kotlin:kotlin-reflect")	// Version provided by plugin
 		compileOnly("org.springframework:spring-webmvc:${properties["spring.version"]}")
 		compileOnly("com.fasterxml.jackson.core:jackson-databind:${properties["jackson.version"]}")
 	}
