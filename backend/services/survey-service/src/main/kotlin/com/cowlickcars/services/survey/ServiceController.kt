@@ -6,5 +6,5 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class ServiceController {
 	@GetMapping("/survey")
-	fun login() = "Hello survey world!"
+	fun survey() = "Hello survey world!"
 }

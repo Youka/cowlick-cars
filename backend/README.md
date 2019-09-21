@@ -7,7 +7,7 @@ Runtime libraries and service applications for java servlet container.
 ## Build
 * Call **gradle wrapper** to execute tasks:
 	* List available projects & tasks: `gradlew`
-	* Basic builds:
+	* Build only:
 		* Pack server runtime libraries: `gradlew copyServerRuntime`
 		* Build services: `gradlew war`
 	* Build + deploy on **tomcat**:

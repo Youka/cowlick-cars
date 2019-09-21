@@ -7,9 +7,9 @@ Database migration with **flyway** and **postgre-sql** support by default.
 * Put [sql migrations](https://flywaydb.org/documentation/migrations#sql-based-migrations) in _flyway/migrations_
 
 ## Update
-* Modify **runtime & drivers** in _flyway.sh_
+* Modify **runtime & drivers** in _flyway.sh_ (set variables at beginning)
 * Sync **configuration** on database switch
-* Add more **sql migrations** to progress
+* Add more **sql migrations** to proceed
 
 ## Execution
 Make sure the configured target database is running, then call:
