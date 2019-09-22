@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:context="http://www.springframework.org/schema/context"
 	   xmlns:mvc="http://www.springframework.org/schema/mvc"
 	   xmlns:jee="http://www.springframework.org/schema/jee"
-	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	   xmlns:sec="http://www.springframework.org/schema/security"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation=
+		   		"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-				http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+				http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+				http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 	<!-- Find components -->
 	<context:component-scan base-package="com.cowlickcars.services" />
 
@@ -19,4 +22,21 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
+
+	<!-- Map container authorization -->
+	<sec:authentication-manager>
+		<sec:authentication-provider>
+			<sec:user-service>
+				<!-- For password encoding, see <https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#pe-dpe-format> -->
+				<sec:user name="test" password="{noop}test" authorities="manager-gui" />
+			</sec:user-service>
+		</sec:authentication-provider>
+	</sec:authentication-manager>
+	<sec:http use-expressions="true">
+		<sec:http-basic />
+		<sec:csrf disabled="true" />
+		<sec:jee mappable-roles="manager-gui" />
+		<!-- For access expressions, see <https://docs.spring.io/spring-security/site/docs/5.0.x/reference/htmlsingle/#el-common-built-in> -->
+		<sec:intercept-url pattern="/*" access="isAuthenticated()" />
+	</sec:http>
 </beans>

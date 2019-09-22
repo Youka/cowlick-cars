@@ -26,6 +26,9 @@ subprojects {
 		// Data
 		compileOnly("org.springframework:spring-jdbc:${properties["spring.version"]}")
 		compileOnly("org.postgresql:postgresql:${properties["postgresql.version"]}")
+		// Security
+		compileOnly("org.springframework.security:spring-security-web:${properties["spring-security.version"]}")
+		compileOnly("org.springframework.security:spring-security-config:${properties["spring-security.version"]}")
 	}
 }
 
