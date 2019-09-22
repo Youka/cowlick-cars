@@ -17,25 +17,23 @@
 	<!-- Enable control by MVC annotations -->
 	<mvc:annotation-driven />
 
-	<!-- Bind database connection -->
+	<!-- Bind database from container -->
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/cowlick-cars" expected-type="javax.sql.DataSource" />
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
 
-	<!-- Map container authorization -->
+	<!-- Bind authorization by database -->
 	<sec:authentication-manager>
 		<sec:authentication-provider>
-			<sec:user-service>
-				<!-- For password encoding, see <https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#pe-dpe-format> -->
-				<sec:user name="test" password="{noop}test" authorities="manager-gui" />
-			</sec:user-service>
+			<sec:jdbc-user-service data-source-ref="dataSource"
+								   users-by-username-query="SELECT username,password,enabled FROM auth.users WHERE username=?"
+								   authorities-by-username-query="SELECT username,role AS authority FROM auth.roles WHERE username=?"
+			/>
 		</sec:authentication-provider>
 	</sec:authentication-manager>
 	<sec:http use-expressions="true">
 		<sec:http-basic />
-		<sec:csrf disabled="true" />
-		<sec:jee mappable-roles="manager-gui" />
 		<!-- For access expressions, see <https://docs.spring.io/spring-security/site/docs/5.0.x/reference/htmlsingle/#el-common-built-in> -->
 		<sec:intercept-url pattern="/*" access="isAuthenticated()" />
 	</sec:http>

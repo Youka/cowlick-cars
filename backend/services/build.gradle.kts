@@ -17,7 +17,7 @@ subprojects {
 	tasks.register("deployTomcatService") {
 		group = project.name
 		description = "Copy ${project.name} to tomcat web applications directory."
-		dependsOn("clean", "war")
+		dependsOn("war")
 		doLast {
 			copy {
 				// Find server
