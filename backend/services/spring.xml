@@ -36,5 +36,8 @@
 		<sec:http-basic />
 		<!-- For access expressions, see <https://docs.spring.io/spring-security/site/docs/5.0.x/reference/htmlsingle/#el-common-built-in> -->
 		<sec:intercept-url pattern="/*" access="isAuthenticated()" />
+		<sec:session-management>
+			<sec:concurrency-control max-sessions="1" />
+		</sec:session-management>
 	</sec:http>
 </beans>
