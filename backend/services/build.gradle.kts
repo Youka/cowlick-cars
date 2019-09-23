@@ -8,6 +8,7 @@ val serviceSpringXml = projectDir.resolve("spring.xml")
 
 // Apply for multiple projects
 subprojects {
+	// Packaging
 	apply(plugin = "war")
 	tasks.named<War>("war") {
 		webXml = serviceWebXml
@@ -33,5 +34,10 @@ subprojects {
 				into(destinationDir)
 			}
 		}
+	}
+
+	// Server-native dependencies
+	dependencies {
+		compileOnly("javax.servlet:javax.servlet-api:${properties["servlet-api.version"]}")
 	}
 }
