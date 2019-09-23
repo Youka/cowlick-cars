@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class ServiceController {
-	@GetMapping("/auth")
-	fun auth(auth: Authentication?) = auth?.run {
-		"User: $name<br />Authorities: $authorities"
-	}
+	@GetMapping("/login")
+	fun login() = "Hello login world!"
 }

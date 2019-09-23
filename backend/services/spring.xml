@@ -26,6 +26,7 @@
 	<!-- Bind authorization by database -->
 	<sec:authentication-manager>
 		<sec:authentication-provider>
+			<!-- For password encoding, see <https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#pe-dpe> -->
 			<sec:jdbc-user-service data-source-ref="dataSource"
 								   users-by-username-query="SELECT username,password,enabled FROM auth.users WHERE username=?"
 								   authorities-by-username-query="SELECT username,role AS authority FROM auth.roles WHERE username=?"
@@ -35,6 +36,7 @@
 	<sec:http use-expressions="true">
 		<sec:http-basic />
 		<!-- For access expressions, see <https://docs.spring.io/spring-security/site/docs/5.0.x/reference/htmlsingle/#el-common-built-in> -->
+		<sec:intercept-url pattern="/login" access="permitAll" />
 		<sec:intercept-url pattern="/*" access="isAuthenticated()" />
 		<sec:session-management>
 			<sec:concurrency-control max-sessions="1" />
