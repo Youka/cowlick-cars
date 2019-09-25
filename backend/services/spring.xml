@@ -33,11 +33,18 @@
 			/>
 		</sec:authentication-provider>
 	</sec:authentication-manager>
-	<sec:http use-expressions="true">
-		<sec:http-basic />
+	<bean id="forbiddenEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint" />
+	<sec:http use-expressions="true" entry-point-ref="forbiddenEntryPoint">
+		<!-- Allow external access -->
+		<sec:csrf disabled="true" />
+		<!-- Fetch on /login with post method & UrlSearchParams body -->
+		<sec:form-login />
+		<!-- Fetch on /logout with post method -->
+		<sec:logout />
 		<!-- For access expressions, see <https://docs.spring.io/spring-security/site/docs/5.0.x/reference/htmlsingle/#el-common-built-in> -->
 		<sec:intercept-url pattern="/login" access="permitAll" />
 		<sec:intercept-url pattern="/*" access="isAuthenticated()" />
+		<!-- Limit session control -->
 		<sec:session-management>
 			<sec:concurrency-control max-sessions="1" />
 		</sec:session-management>
