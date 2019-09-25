@@ -16,4 +16,5 @@ Runtime libraries and service applications for java servlet container.
 		* Deploy services: `gradlew deployTomcatService`
 
 ## Server requirements
-* JNDI resource `jdbc/cowlick-cars` with working PostgreSQL database access
+* Database access with working PostgreSQL by JNDI resource `jdbc/cowlick-cars`
+* Logins + authorities stored in database (see **authentication-provider** in [spring security configuration](./services/spring.xml))
