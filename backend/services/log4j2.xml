@@ -4,11 +4,21 @@
 			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			   xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config http://logging.apache.org/log4j/2.0/config/Log4j-config.xsd"
 			   status="WARN">
+	<!-- Placeholder fillings -->
+	<Properties>
+		<Property name="stackTraceFilters">
+			org.springframework,
+			org.apache,
+			java,
+			jdk
+		</Property>
+	</Properties>
 	<!-- Logging output -->
 	<Appenders>
 		<!-- Console stdout -->
 		<Console name="StdOut" target="SYSTEM_OUT">
-			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+			<!-- See <https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout> -->
+			<PatternLayout pattern="%d | %-5level (%c{3.}) | %msg{nolookups}%rThrowable{10,filters(${stackTraceFilters})}%n"/>
 		</Console>
 	</Appenders>
 	<!-- Logging input -->
