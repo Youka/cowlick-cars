@@ -5,6 +5,7 @@ version = "1.0-SNAPSHOT"
 // Resources
 val serviceWebXml = projectDir.resolve("web.xml")
 val serviceSpringXml = projectDir.resolve("spring.xml")
+val serviceLog4j2Xml = projectDir.resolve("log4j2.xml")
 
 // Apply for multiple projects
 subprojects {
@@ -12,7 +13,10 @@ subprojects {
 	apply(plugin = "war")
 	tasks.named<War>("war") {
 		webXml = serviceWebXml
-		webInf.from(serviceSpringXml)
+		webInf {
+			from(serviceSpringXml)
+			from(serviceLog4j2Xml)
+		}
 		archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
 	}
 	tasks.register("deployTomcatService") {

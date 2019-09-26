@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration strict="true"
+			   xmlns="http://logging.apache.org/log4j/2.0/config"
+			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			   xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config http://logging.apache.org/log4j/2.0/config/Log4j-config.xsd"
+			   status="WARN">
+	<!-- Logging output -->
+	<Appenders>
+		<!-- Console stdout -->
+		<Console name="StdOut" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+		</Console>
+	</Appenders>
+	<!-- Logging input -->
+	<Loggers>
+		<!-- Custom logger -->
+		<Logger name="com.cowlickcars.services" level="DEBUG" />
+		<!-- Parent of all loggers -->
+		<Root level="ERROR">
+			<AppenderRef ref="StdOut"/>
+		</Root>
+	</Loggers>
+</Configuration>

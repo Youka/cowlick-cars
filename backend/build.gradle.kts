@@ -29,6 +29,8 @@ subprojects {
 		// Security
 		compileOnly("org.springframework.security:spring-security-web:${properties["spring-security.version"]}")
 		compileOnly("org.springframework.security:spring-security-config:${properties["spring-security.version"]}")
+		// Logging
+		compileOnly("org.apache.logging.log4j:log4j-web:${properties["log4j.version"]}")
 	}
 }
 
