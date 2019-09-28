@@ -34,9 +34,9 @@ open class ServiceController(
 	@GetMapping("/info")
 	@PreAuthorize("hasAuthority('administrator')")
 	open fun getInfo(@RequestParam username: String) = this.jdbc.queryForObject(
-			"SELECT * FROM auth.v_enabled_users WHERE username = ?",
-			BeanPropertyRowMapper(UserInfo::class.java),
-			username
+		"SELECT * FROM auth.v_enabled_users WHERE username = ?",
+		BeanPropertyRowMapper(UserInfo::class.java),
+		username
 	)
 	data class UserInfo(
 		var username: String = "",
