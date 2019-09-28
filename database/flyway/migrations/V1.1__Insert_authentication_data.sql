@@ -9,10 +9,11 @@ INSERT INTO auth.users(username, password) VALUES
 	('leeroy', '{noop}jenkins');
 	
 -- User-role mappings
+INSERT INTO auth.user_role_mapping(username) VALUES
+	('admin'),
+	('leeroy');
 INSERT INTO auth.user_role_mapping(username, rolename) VALUES
 	('admin', 'administrator');
-INSERT INTO auth.user_role_mapping(username) VALUES
-	('leeroy');
 	
 -- User details
 INSERT INTO auth.user_details(username, first_name, last_name, e_mail) VALUES

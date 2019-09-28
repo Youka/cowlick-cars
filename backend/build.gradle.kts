@@ -23,7 +23,7 @@ subprojects {
 		// REST
 		compileOnly("org.springframework:spring-webmvc:${properties["spring.version"]}")
 		compileOnly("com.fasterxml.jackson.core:jackson-databind:${properties["jackson.version"]}")
-		// Data
+		// JDBC
 		compileOnly("org.springframework:spring-jdbc:${properties["spring.version"]}")
 		compileOnly("org.postgresql:postgresql:${properties["postgresql.version"]}")
 		// Security

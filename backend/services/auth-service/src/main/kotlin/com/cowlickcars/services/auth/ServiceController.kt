@@ -14,7 +14,7 @@ import java.io.NotActiveException
 import java.time.ZonedDateTime
 
 @RestController
-class ServiceController(
+open class ServiceController(
 	private val jdbc: JdbcTemplate
 ) {
 	@GetMapping("/test")
@@ -33,7 +33,7 @@ class ServiceController(
 
 	@GetMapping("/info")
 	@PreAuthorize("hasAuthority('administrator')")
-	fun getInfo(@RequestParam username: String) = this.jdbc.queryForObject(
+	open fun getInfo(@RequestParam username: String) = this.jdbc.queryForObject(
 			"SELECT * FROM auth.v_enabled_users WHERE username = ?",
 			BeanPropertyRowMapper(UserInfo::class.java),
 			username

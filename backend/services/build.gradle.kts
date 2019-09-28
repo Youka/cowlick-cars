@@ -2,7 +2,7 @@
 description = "Services management project."
 version = "1.0-SNAPSHOT"
 
-// Resources
+// Shared resources
 val serviceWebXml = projectDir.resolve("web.xml")
 val serviceSpringXml = projectDir.resolve("spring.xml")
 val serviceLog4j2Xml = projectDir.resolve("log4j2.xml")
