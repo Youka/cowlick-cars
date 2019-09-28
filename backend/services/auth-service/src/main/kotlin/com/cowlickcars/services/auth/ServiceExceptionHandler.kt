@@ -1,4 +1,4 @@
-package com.cowlickcars.services.survey
+package com.cowlickcars.services.auth
 
 import org.apache.logging.log4j.LogManager
 import org.springframework.http.HttpStatus
