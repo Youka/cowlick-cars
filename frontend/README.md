@@ -9,9 +9,13 @@ Web view of cowlick-cars management platform.
 * Build:
     * Production: `npm run build`
     * Watch (development): `npm run watch`
-* Output can be found in `dist/`:
-    * Works fully client-side, no server required
-    * Compressed resources available
+* Output path is configurable:
+    * Default: `./dist/`
+    * Environment variable `CATALINA_HOME` set: `$CATALINA_HOME/webapps/ROOT/`
+
+## Application runtime
+* Works fully client-side, no server required (SPA, no SSR)
+* Compressed resources available
 
 ## Browser support
 Cowlick cars supports all modern browsers.  

@@ -6,10 +6,18 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 
+// Optional output directory
+const path = require("path")
+const tomcatDir = process.env["CATALINA_HOME"]
+
 // Return webpack configuration
 module.exports = {
   // Input file to bundle with all dependencies
   entry: "./src/main.ts",
+  // Output location for bundle + assets
+  output: {
+    path: tomcatDir ? tomcatDir + "/webapps/ROOT" : path.resolve(__dirname, "dist")
+  },
   // File extensions to consider by webpack itself
   resolve: {
     extensions: [
