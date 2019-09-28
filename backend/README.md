@@ -18,3 +18,10 @@ Runtime libraries and service applications for java servlet container.
 ## Server requirements
 * Database access with working PostgreSQL by JNDI resource `jdbc/cowlick-cars`
 * Logins + authorities stored in database (see **authentication-provider** in [spring security configuration](./services/spring.xml))
+
+## IntelliJ (Community) - Tomcat support
+* In _File -> Settings -> Tools -> External Tools_ add a new tool with tomcat `startup` script as program,
+choose a meaningful group + name and deselect _Open console..._ (tomcat runs in a detached process anyway).
+On start a tomcat console opens which can receive close signals (`CTRL+C`) to shutdown the server.
+* Add gradle-based run configurations with `backend` as project,
+`deployTomcat...` tasks to execute and environment variable `CATALINA_HOME` set to tomcat directory.
