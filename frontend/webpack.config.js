@@ -16,7 +16,8 @@ module.exports = {
   entry: "./src/main.ts",
   // Output location for bundle + assets
   output: {
-    path: tomcatDir ? tomcatDir + "/webapps/ROOT" : path.resolve(__dirname, "dist")
+    path: tomcatDir ? tomcatDir + "/webapps/ROOT" : path.resolve(__dirname, "dist"),
+    chunkFilename: "[name].[chunkhash].js"  // Chunk hash by filename because no html query
   },
   // File extensions to consider by webpack itself
   resolve: {
