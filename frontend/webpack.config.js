@@ -85,11 +85,19 @@ module.exports = {
       },
       // Fonts
       {
-        test: /\.(ttf|woff2?|eot)$/i,
+        test: /\.woff2?$/i,
         loader: "file-loader",
         options: {
           name: "[name].[hash].[ext]",
           outputPath: "fonts"
+        }
+      },
+      {
+        test: /\.(ttf|eot)$/i,
+        loader: "file-loader",
+        options: {
+          // Don't support deprecated formats
+          emitFile: false
         }
       },
       // Vue
