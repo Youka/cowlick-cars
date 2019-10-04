@@ -1,5 +1,6 @@
 package com.cowlickcars.services.auth
 
+import org.apache.logging.log4j.LogManager
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -11,14 +12,26 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.io.NotActiveException
+import java.rmi.activation.ActivationException
 import java.time.ZonedDateTime
 
 @RestController
 class ServiceController(
 	private val jdbc: JdbcTemplate
 ) {
-	@GetMapping("/test")
-	fun getTest(): Nothing = throw NotActiveException("Test exception for logging!!!")
+	companion object {
+		private val log = LogManager.getLogger(ServiceController::class.java)
+	}
+
+	@GetMapping("/error")
+	fun getError() = try {
+		throw ActivationException("Test exception :p")
+	} catch (e: Exception) {
+		log.error("Catched exception!", e)
+	}
+
+	@GetMapping("/fatal")
+	fun getFatal(): Nothing = throw NotActiveException("Uncatched exception!!!")
 
 	@GetMapping("/session")
 	fun getSession(auth: Authentication?) = auth?.run {
