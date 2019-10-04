@@ -4,7 +4,10 @@ version = "1.0-SNAPSHOT"
 
 // Import global plugins
 plugins {
+	// Kotlin compiler with target JVM
 	kotlin("jvm").version("1.3.50")
+	// Opens spring-annotated kotlin classes for required code generation
+	kotlin("plugin.spring").version("1.3.50")
 }
 
 // Apply for multiple projects
@@ -16,11 +19,12 @@ allprojects {
 }
 subprojects {
 	apply(plugin = "kotlin")
+	apply(plugin = "kotlin-spring")
 	dependencies {
 		// Kotlin
 		compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")	// Version provided by plugin
 		compileOnly("org.jetbrains.kotlin:kotlin-reflect")	// Version provided by plugin
-		// REST
+		// REST + JSON
 		compileOnly("org.springframework:spring-webmvc:${properties["spring.version"]}")
 		compileOnly("com.fasterxml.jackson.core:jackson-databind:${properties["jackson.version"]}")
 		// JDBC
