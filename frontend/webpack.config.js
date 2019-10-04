@@ -17,7 +17,6 @@ module.exports = {
   // Output location for bundle + assets
   output: {
     path: tomcatDir ? tomcatDir + "/webapps/ROOT" : path.resolve(__dirname, "dist"),
-    chunkFilename: "[name].[chunkhash].js"  // Chunk hash by filename because no html query
   },
   // File extensions to consider by webpack itself
   resolve: {
@@ -112,7 +111,7 @@ module.exports = {
       templateParameters: require("./package.json"),
       // Add favicon to template
       favicon: "./src/favicon.png",
-      // Add hash to resource requests to develop around caches
+      // Add hash to resource requests to avoid browser caches
       hash: true
     }),
     // Pack resolved CSS into file (instead of multiple style tags by default)
@@ -129,6 +128,16 @@ module.exports = {
       cache: true
     })
   ],
+  // Optimize bundling
+  optimization: {
+    // Improve caching by separate vendor resources (see <https://webpack.js.org/plugins/split-chunks-plugin/#optimizationsplitchunks>)
+    splitChunks: {
+      name: "vendors",
+      chunks: "all"
+    },
+    // Move webpack-generated runtime into separate chunk
+    runtimeChunk: "single"
+  },
   // Watch mode behaviour
   watchOptions: {
     // Reduce cycles (=less CPU load)
