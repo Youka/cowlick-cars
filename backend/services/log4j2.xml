@@ -18,8 +18,9 @@
 		<!-- Console stdout -->
 		<Console name="StdOut" target="SYSTEM_OUT">
 			<!-- See <https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout> -->
-			<PatternLayout pattern="%d | %-5level (%c{3.}) | %msg{nolookups}%rThrowable{10,filters(${stackTraceFilters})}%n"/>
+			<PatternLayout pattern="%d | %-5level (%c{3.})[{{PROJECT_NAME}}] | %msg{nolookups}%rThrowable{10,filters(${stackTraceFilters})}%n"/>
 		</Console>
+		<!-- For log file location, see <https://logging.apache.org/log4j/2.x/manual/configuration.html#PropertySubstitution> -->
 	</Appenders>
 	<!-- Logging input -->
 	<Loggers>

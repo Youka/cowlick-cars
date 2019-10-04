@@ -3,19 +3,21 @@ description = "Services management project."
 version = "1.0-SNAPSHOT"
 
 // Shared resources
-val serviceWebXml = projectDir.resolve("web.xml")
-val serviceSpringXml = projectDir.resolve("spring.xml")
-val serviceLog4j2Xml = projectDir.resolve("log4j2.xml")
+val servicesWebXml = projectDir.resolve("web.xml")
+val servicesSpringXml = projectDir.resolve("spring.xml")
+val servicesLog4j2Xml = projectDir.resolve("log4j2.xml")
 
 // Apply for multiple projects
 subprojects {
 	// Packaging
 	apply(plugin = "war")
 	tasks.named<War>("war") {
-		webXml = serviceWebXml
+		webXml = servicesWebXml
 		webInf {
-			from(serviceSpringXml)
-			from(serviceLog4j2Xml)
+			from(servicesSpringXml)
+			from(servicesLog4j2Xml).filter {
+				it.replace("{{PROJECT_NAME}}", project.name)
+			}
 		}
 		archiveFileName.set("${archiveBaseName.get()}.${archiveExtension.get()}")
 	}
