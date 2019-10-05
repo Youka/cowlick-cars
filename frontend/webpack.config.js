@@ -18,8 +18,8 @@ module.exports = {
   // Output location for js bundle + chunks
   output: {
     path: outputDir,
-    filename: "[name].[contenthash:8].js",
-    chunkFilename: "[name].[contenthash:8].js"
+    filename: "js/[name].[contenthash:8].js",
+    chunkFilename: "js/[name].[contenthash:8].js"
   },
   // File extensions to consider by webpack itself
   resolve: {
@@ -62,7 +62,12 @@ module.exports = {
         test: /\.css$/,
         use: [
           "vue-style-loader",
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "../" // Base path outside css folder
+            }
+          },
           "css-loader"
         ]
       },
@@ -71,7 +76,12 @@ module.exports = {
         test: /\.s(c|a)ss$/,
         use: [
           "vue-style-loader",
-          MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: "../" // Base path outside css folder
+            }
+          },
           "css-loader",
           "sass-loader"
         ]
@@ -82,8 +92,8 @@ module.exports = {
         loader: "url-loader",
         options: {
           limit: 8192,
-          name: "[name].[contenthash:8].[ext]",
-          outputPath: "images"
+          outputPath: "images",
+          name: "[name].[contenthash:8].[ext]"
         }
       },
       // Fonts
@@ -91,8 +101,8 @@ module.exports = {
         test: /\.woff2?$/i,
         loader: "file-loader",
         options: {
-          name: "[name].[contenthash:8].[ext]",
-          outputPath: "fonts"
+          outputPath: "fonts",
+          name: "[name].[contenthash:8].[ext]"
         }
       },
       {
@@ -125,9 +135,8 @@ module.exports = {
     }),
     // Pack resolved CSS into file (instead of multiple style tags by default)
     new MiniCssExtractPlugin({
-      path: outputDir,
-      filename: "[name].[contenthash:8].css",
-      chunkFilename: "[name].[contenthash:8].css"
+      filename: "css/[name].[contenthash:8].css",
+      chunkFilename: "css/[name].[contenthash:8].css"
     }),
     // Compile and load vue templates (trigger loaders & split contents)
     new VueLoaderPlugin(),
