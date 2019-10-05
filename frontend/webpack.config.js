@@ -6,17 +6,20 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 
-// Optional output directory
-const path = require("path")
-const tomcatDir = process.env["CATALINA_HOME"]
+// Detect output directory
+const path = require("path"),
+    tomcatDir = process.env["CATALINA_HOME"],
+    outputDir = tomcatDir ? tomcatDir + "/webapps/ROOT" : path.resolve(__dirname, "dist");
 
 // Return webpack configuration
 module.exports = {
   // Input file to bundle with all dependencies
   entry: "./src/main.ts",
-  // Output location for bundle + assets
+  // Output location for js bundle + chunks
   output: {
-    path: tomcatDir ? tomcatDir + "/webapps/ROOT" : path.resolve(__dirname, "dist"),
+    path: outputDir,
+    filename: "[name].[contenthash:8].js",
+    chunkFilename: "[name].[contenthash:8].js"
   },
   // File extensions to consider by webpack itself
   resolve: {
@@ -79,7 +82,7 @@ module.exports = {
         loader: "url-loader",
         options: {
           limit: 8192,
-          name: "[name].[hash].[ext]",
+          name: "[name].[contenthash:8].[ext]",
           outputPath: "images"
         }
       },
@@ -88,7 +91,7 @@ module.exports = {
         test: /\.woff2?$/i,
         loader: "file-loader",
         options: {
-          name: "[name].[hash].[ext]",
+          name: "[name].[contenthash:8].[ext]",
           outputPath: "fonts"
         }
       },
@@ -118,12 +121,14 @@ module.exports = {
       // Provide project configuration as template parameters
       templateParameters: require("./package.json"),
       // Add favicon to template
-      favicon: "./src/favicon.png",
-      // Add hash to resource requests to avoid browser caches
-      hash: true
+      favicon: "./src/favicon.png"
     }),
     // Pack resolved CSS into file (instead of multiple style tags by default)
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      path: outputDir,
+      filename: "[name].[contenthash:8].css",
+      chunkFilename: "[name].[contenthash:8].css"
+    }),
     // Compile and load vue templates (trigger loaders & split contents)
     new VueLoaderPlugin(),
     // Auto-import required ui components (reducing bundle size)
