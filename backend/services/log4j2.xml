@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration strict="true"
-			   xmlns="http://logging.apache.org/log4j/2.0/config"
-			   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			   xsi:schemaLocation="http://logging.apache.org/log4j/2.0/config http://logging.apache.org/log4j/2.0/config/Log4j-config.xsd"
-			   status="WARN">
-	<!-- Placeholder fillings -->
+<Configuration name="{{PROJECT_NAME}}" packages="" status="ERROR">
+	<!-- Properties to insert below -->
 	<Properties>
 		<Property name="stackTraceFilters">
-			org.springframework,
-			org.apache,
 			java,
-			jdk
+			jdk,
+			org.springframework,
+			org.apache
 		</Property>
 	</Properties>
 	<!-- Logging output -->
 	<Appenders>
-		<!-- Console stdout -->
-		<Console name="StdOut" target="SYSTEM_OUT">
-			<!-- See <https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout> -->
-			<PatternLayout pattern="%d | %-5level (%c{3.})[{{PROJECT_NAME}}] | %msg{nolookups}%rThrowable{10,filters(${stackTraceFilters})}%n"/>
-		</Console>
-		<!-- For log file location, see <https://logging.apache.org/log4j/2.x/manual/configuration.html#PropertySubstitution> -->
+		<!--
+			File with auto-archiving (see <https://logging.apache.org/log4j/2.x/manual/appenders.html#RollingFileAppender>)
+			For substitutions, see <https://logging.apache.org/log4j/2.x/manual/configuration.html#PropertySubstitution>
+		-->
+		<RollingFile name="RollingFile" fileName="${jndi:logDirectory}/{{PROJECT_NAME}}.log" filePattern="${jndi:logDirectory}/{{PROJECT_NAME}}-%d.log.gz">
+			<!-- Entry format (see <https://logging.apache.org/log4j/2.x/manual/layouts.html#PatternLayout>) -->
+			<PatternLayout pattern="%d | %-5level (%c{3.}) | %msg{nolookups}%rThrowable{10,filters(${stackTraceFilters})}%n"/>
+			<!-- Conditions to archive -->
+			<Policies>
+				<SizeBasedTriggeringPolicy size="50 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<!-- Conditions to delete -->
+			<DefaultRolloverStrategy max="20"/>
+		</RollingFile>
 	</Appenders>
 	<!-- Logging input -->
 	<Loggers>
@@ -28,7 +33,7 @@
 		<Logger name="com.cowlickcars.services" level="DEBUG" />
 		<!-- Parent of all loggers -->
 		<Root level="ERROR">
-			<AppenderRef ref="StdOut"/>
+			<AppenderRef ref="RollingFile"/>
 		</Root>
 	</Loggers>
 </Configuration>

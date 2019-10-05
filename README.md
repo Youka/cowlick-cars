@@ -21,4 +21,5 @@ Application server from [tomcat.apache.org](http://tomcat.apache.org/).
 * Add database connection:
 	* Add `<Resource name="jdbc/cowlick-cars" type="javax.sql.DataSource" auth="Container" driverClassName="???" url="???" username="???" password="???" ... />` to _conf/server.xml_
 	* Add `<ResourceLink name="jdbc/cowlick-cars" type="javax.sql.DataSource" global="jdbc/cowlick-cars" />` to _conf/context.xml_
+* Add application logs directory by `<Environment name="logDirectory" value="???" type="java.lang.String" />` to _conf/context.xml_
 * Add compression support by `<Connector ... compression="on" useSendfile="false"/>` to _conf/server.xml_
