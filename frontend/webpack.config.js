@@ -66,7 +66,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: "../" // Base path outside css folder
+              publicPath: "../" // Fix subfolder in CSS filename
             }
           },
           "css-loader"
@@ -80,7 +80,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: "../" // Base path outside css folder
+              publicPath: "../" // Fix subfolder in CSS filename
             }
           },
           "css-loader",
@@ -93,8 +93,7 @@ module.exports = {
         loader: "url-loader",
         options: {
           limit: 8192,
-          outputPath: "images",
-          name: "[name].[contenthash:8].[ext]"
+          name: "images/[name].[contenthash:8].[ext]"
         }
       },
       // Fonts
@@ -102,8 +101,7 @@ module.exports = {
         test: /\.woff2?$/i,
         loader: "file-loader",
         options: {
-          outputPath: "fonts",
-          name: "[name].[contenthash:8].[ext]"
+          name: "fonts/[name].[contenthash:8].[ext]"
         }
       },
       {
@@ -133,10 +131,10 @@ module.exports = {
       templateParameters: require("./package.json"),
       // Add favicon to template
       favicon: "./src/favicon.png",
-      // Put scripts in html head (instead of body bottom)
+      // Put scripts in html head (instead of body bottom; reason see below)
       inject: "head"
     }),
-    // Extend script tags by previous plugin
+    // Extend script tags by html plugin
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: "defer"
     }),
