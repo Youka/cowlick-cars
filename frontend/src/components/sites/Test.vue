@@ -1,15 +1,24 @@
 <template>
-  <v-form>
-    <v-text-field v-model="count" label="Counter" readonly outlined></v-text-field>
-    <v-btn v-on:click="increment">Increment counter</v-btn>
-    <v-btn v-on:click="fetchGithubApi">Fetch Github API<v-icon right>mdi-cloud-download</v-icon></v-btn>
-  </v-form>
+    <v-tabs>
+      <v-tab>Session</v-tab>
+      <v-tab-item class="pa-3">
+        <v-btn v-on:click="login">Login<v-icon right>mdi-login</v-icon></v-btn>
+        <v-btn v-on:click="logout">Logout<v-icon right>mdi-logout</v-icon></v-btn>
+        <v-btn v-on:click="session">Session<v-icon right>mdi-information</v-icon></v-btn>
+      </v-tab-item>
+      <v-tab>Counter</v-tab>
+      <v-tab-item class="pa-3">
+        <v-text-field v-model="count" label="Counter" readonly outlined></v-text-field>
+        <v-btn v-on:click="increment">Increment counter</v-btn>
+      </v-tab-item>
+    </v-tabs>
 </template>
 
 <script lang="ts">
   // Imports
   import Vue from "vue";
   import {mapGetters, mapMutations} from "vuex";
+  import AuthService from "../../services/auth-service";
 
   // Extend vue instance of component
   export default Vue.extend({
@@ -21,8 +30,22 @@
       ...mapMutations([
         "increment"
       ]),
-      fetchGithubApi: () =>
-        fetch("https://api.github.com/").then((response) => response.text()).then((data) => alert(data))
+      // Service requests
+      login: () =>
+        AuthService.login("admin", "admin")
+        .then(async (response) =>
+          alert("Status: " + response.status + "\nData: " + await response.text())
+        ),
+      logout: () =>
+        AuthService.logout()
+        .then(async (response) =>
+          alert("Status: " + response.status + "\nData: " + await response.text())
+        ),
+      session: () =>
+        AuthService.session()
+        .then(async (response) =>
+          alert("Status: " + response.status + "\nData: " + await response.text())
+        )
     }
   });
 </script>
