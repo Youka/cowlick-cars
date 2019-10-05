@@ -9,7 +9,7 @@ const CompressionPlugin = require("compression-webpack-plugin");
 // Detect output directory
 const path = require("path"),
     tomcatDir = process.env["CATALINA_HOME"],
-    outputDir = tomcatDir ? tomcatDir + "/webapps/ROOT" : path.resolve(__dirname, "dist");
+    outputDir = tomcatDir ? path.resolve(tomcatDir, "webapps", "ROOT") : path.resolve(__dirname, "dist");
 
 // Return webpack configuration
 module.exports = {
