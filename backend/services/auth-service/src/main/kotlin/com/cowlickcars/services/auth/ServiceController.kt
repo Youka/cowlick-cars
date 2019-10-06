@@ -36,7 +36,7 @@ class ServiceController(
 	@GetMapping("/session")
 	fun getSession(auth: Authentication?) = auth?.run {
 		ResponseEntity(
-			"User: $name<br />Authorities: $authorities",
+			auth,
 			HttpHeaders().apply {
 				setExpires(ZonedDateTime.now().plusMinutes(120))
 			},
