@@ -8,9 +8,9 @@ type State = typeof state;
 export default {
     state,
     getters: {
-        count: (state: State) => state.count
+        count: (st: State) => st.count
     },
     mutations: {
-        increment: (state: State) => state.count++
+        increment: (st: State) => st.count++
     }
 };

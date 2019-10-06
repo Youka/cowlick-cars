@@ -1,4 +1,5 @@
 <template>
+  <v-container fluid>
     <v-tabs>
       <v-tab>Session</v-tab>
       <v-tab-item class="pa-3">
@@ -12,6 +13,7 @@
         <v-btn v-on:click="increment">Increment counter</v-btn>
       </v-tab-item>
     </v-tabs>
+  </v-container>
 </template>
 
 <script lang="ts">
