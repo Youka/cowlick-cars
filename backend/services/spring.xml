@@ -24,7 +24,7 @@
 		<constructor-arg ref="dataSource" />
 	</bean>
 
-	<!-- Bind authorization by database -->
+	<!-- Bind authentication by database -->
 	<sec:authentication-manager>
 		<sec:authentication-provider>
 			<!-- For password encoding, see <https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#pe-dpe> -->
@@ -34,8 +34,9 @@
 			/>
 		</sec:authentication-provider>
 	</sec:authentication-manager>
-	<bean id="forbiddenEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint" />
-	<sec:http use-expressions="true" entry-point-ref="forbiddenEntryPoint">
+	<!-- Define authorization rules -->
+	<bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.Http403ForbiddenEntryPoint" />
+	<sec:http use-expressions="true" entry-point-ref="authenticationEntryPoint">
 		<!-- Allow external access -->
 		<sec:csrf disabled="true" />
 		<!-- Fetch on /login with post method & UrlSearchParams body -->
