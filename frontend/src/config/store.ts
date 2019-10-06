@@ -1,11 +1,16 @@
+// State
+const state = {
+    count: 0
+};
+type State = typeof state;
+
+// Store
 export default {
-    state: {
-        count: 0
-    },
+    state,
     getters: {
-        count: (state: any) => state.count
+        count: (state: State) => state.count
     },
     mutations: {
-        increment: (state: any) => state.count++
+        increment: (state: State) => state.count++
     }
 };
