@@ -40,7 +40,7 @@
 		<!-- Allow external access -->
 		<sec:csrf disabled="true" />
 		<!-- Fetch on /login with post method & UrlSearchParams body -->
-		<sec:form-login />
+		<sec:form-login default-target-url="/login" />
 		<!-- Fetch on /logout with post method -->
 		<sec:logout />
 		<!-- For access expressions, see <https://docs.spring.io/spring-security/site/docs/5.0.x/reference/htmlsingle/#el-common-built-in> -->
