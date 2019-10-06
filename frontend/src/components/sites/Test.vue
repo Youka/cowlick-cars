@@ -33,21 +33,24 @@
         "increment"
       ]),
       // Service requests
-      login: () =>
+      login() {
         AuthService.login("admin", "admin")
-        .then(async (response) =>
-          alert("Status: " + response.status + "\nData: " + await response.text())
-        ),
-      logout: () =>
+        .then((success) =>
+          alert("Login: " + success)
+        );
+      },
+      logout() {
         AuthService.logout()
-        .then(async (response) =>
-          alert("Status: " + response.status + "\nData: " + await response.text())
-        ),
-      session: () =>
+        .then(() =>
+          alert("Logout!")
+        );
+      },
+      session() {
         AuthService.session()
-        .then(async (response) =>
-          alert("Status: " + response.status + "\nData: " + await response.text())
-        )
+        .then((response) =>
+          alert("Status: " + response.status + "\nData: " + JSON.stringify(response.data))
+        );
+      }
     }
   });
 </script>
