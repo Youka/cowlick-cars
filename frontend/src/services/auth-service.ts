@@ -11,7 +11,7 @@ export default {
                 body: new URLSearchParams({username, password})
             }
         );
-        return response.redirected ? !response.url.match("\\?error$") : true;
+        return response.redirected ? !response.url.match("\\?error$") : response.ok;
     },
     async logout() {
         await fetch(
