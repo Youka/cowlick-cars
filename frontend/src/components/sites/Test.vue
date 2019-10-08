@@ -23,7 +23,7 @@
   import AuthService from "../../services/auth-service";
 
   // Extend vue instance of component
-  export default Vue.extend({
+  export default {
     // Map shared data store into component
     computed: mapGetters([
       "count"
@@ -52,5 +52,5 @@
         );
       }
     }
-  });
+  };
 </script>
