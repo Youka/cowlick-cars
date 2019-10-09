@@ -56,5 +56,8 @@
 	</sec:http>
 
 	<!-- Set caching provider -->
-	<bean id="cacheManager" class="org.springframework.cache.caffeine.CaffeineCacheManager" />
+	<bean id="cacheManager" class="org.springframework.cache.caffeine.CaffeineCacheManager">
+		<!-- See properties of class <com.github.benmanes.caffeine.cache.CaffeineSpec> -->
+		<property name="cacheSpecification" value="maximumSize=200,expireAfterAccess=30m" />
+	</bean>
 </beans>
