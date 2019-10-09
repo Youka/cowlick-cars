@@ -35,6 +35,9 @@ subprojects {
 		compileOnly("org.springframework.security:spring-security-config:${properties["spring.version"]}")
 		// Logging
 		compileOnly("org.apache.logging.log4j:log4j-web:${properties["log4j.version"]}")
+		// Cache
+		compileOnly("org.springframework:spring-context-support:${properties["spring.version"]}")
+		compileOnly("com.github.ben-manes.caffeine:caffeine:${properties["caffeine.version"]}")
 	}
 }
 

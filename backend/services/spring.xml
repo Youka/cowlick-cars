@@ -4,19 +4,23 @@
 	   xmlns:mvc="http://www.springframework.org/schema/mvc"
 	   xmlns:jee="http://www.springframework.org/schema/jee"
 	   xmlns:sec="http://www.springframework.org/schema/security"
+	   xmlns:cache="http://www.springframework.org/schema/cache"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation=
 		   		"http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
 				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 				http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
-				http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+				http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+				http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
 	<!-- Find components -->
 	<context:component-scan base-package="com.cowlickcars.services" />
 	<!-- Enable control by MVC annotations -->
 	<mvc:annotation-driven />
 	<!-- Enable control by security annotations -->
 	<sec:global-method-security pre-post-annotations="enabled" />
+	<!-- Enable control by cache annotations -->
+	<cache:annotation-driven />
 
 	<!-- Bind database from container -->
 	<jee:jndi-lookup id="dataSource" jndi-name="jdbc/cowlick-cars" expected-type="javax.sql.DataSource" />
@@ -50,4 +54,7 @@
 			<sec:concurrency-control max-sessions="1" />
 		</sec:session-management>
 	</sec:http>
+
+	<!-- Set caching provider -->
+	<bean id="cacheManager" class="org.springframework.cache.caffeine.CaffeineCacheManager" />
 </beans>
