@@ -1,16 +1,16 @@
 <template>
   <v-container fluid>
     <v-tabs>
-      <v-tab>Session</v-tab>
+      <v-tab>{{$vuetify.lang.t("$vuetify.test.session")}}</v-tab>
       <v-tab-item class="pa-3">
-        <v-btn v-on:click="login">Login<v-icon right>mdi-login</v-icon></v-btn>
-        <v-btn v-on:click="logout">Logout<v-icon right>mdi-logout</v-icon></v-btn>
-        <v-btn v-on:click="session">Session<v-icon right>mdi-information</v-icon></v-btn>
+        <v-btn v-on:click="login">{{$vuetify.lang.t("$vuetify.test.login")}}<v-icon right>mdi-login</v-icon></v-btn>
+        <v-btn v-on:click="logout">{{$vuetify.lang.t("$vuetify.test.logout")}}<v-icon right>mdi-logout</v-icon></v-btn>
+        <v-btn v-on:click="session">{{$vuetify.lang.t("$vuetify.test.session")}}<v-icon right>mdi-information</v-icon></v-btn>
       </v-tab-item>
-      <v-tab>Counter</v-tab>
+      <v-tab>{{$vuetify.lang.t("$vuetify.test.counter")}}</v-tab>
       <v-tab-item class="pa-3">
-        <v-text-field v-model="count" label="Counter" readonly outlined></v-text-field>
-        <v-btn v-on:click="increment">Increment counter</v-btn>
+        <v-text-field v-model="count" v-bind:label="$vuetify.lang.t('$vuetify.test.counter')" readonly outlined></v-text-field>
+        <v-btn v-on:click="increment">{{$vuetify.lang.t("$vuetify.test.incrementCounter")}}</v-btn>
       </v-tab-item>
     </v-tabs>
   </v-container>
@@ -18,7 +18,6 @@
 
 <script lang="ts">
   // Imports
-  import Vue from "vue";
   import {mapGetters, mapMutations} from "vuex";
   import AuthService from "../../services/auth-service";
 

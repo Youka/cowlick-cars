@@ -4,8 +4,8 @@
     <!-- Side navigation -->
     <v-navigation-drawer app v-model="showNavigation">
       <v-list nav>
-        <v-list-item to="/">Home</v-list-item>
-        <v-list-item to="/test">Test</v-list-item>
+        <v-list-item to="/">{{$vuetify.lang.t("$vuetify.app.home")}}</v-list-item>
+        <v-list-item to="/test">{{$vuetify.lang.t("$vuetify.app.test")}}</v-list-item>
       </v-list>
     </v-navigation-drawer>
     <!-- Top navigation -->
