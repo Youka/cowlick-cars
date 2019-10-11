@@ -8,6 +8,7 @@ export default {
         // English
         en: {
             app: {
+                language: "Language",
                 home: "Home",
                 test: "Test"
             },
@@ -26,6 +27,7 @@ export default {
         // German
         de: {
             app: {
+                language: "Sprache",
                 home: "Startseite",
                 test: "Test"
             },

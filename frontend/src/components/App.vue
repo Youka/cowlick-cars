@@ -9,8 +9,15 @@
       </v-list>
     </v-navigation-drawer>
     <!-- Top navigation -->
-    <v-app-bar app>
+    <v-app-bar app fixed elevate-on-scroll>
       <v-app-bar-nav-icon @click="showNavigation = !showNavigation" />
+      <v-toolbar-title>{{title}}</v-toolbar-title>
+      <v-spacer />
+      <v-select
+        v-model="language"
+        :items="Object.keys($i18n.messages)"
+        :label="$t('app.language')"
+        hide-details outlined />
     </v-app-bar>
     <!-- Main content -->
     <v-content>
@@ -30,11 +37,25 @@
   export default Vue.extend({
     data: () => ({
       // Show navigation initially
-      showNavigation: true
+      showNavigation: true,
+      // Copy title from html document
+      title: document.title
     }),
+    computed: {
+      // Locale wrapper with offline storage
+      language: {
+        get() {
+          return this.$i18n.locale;
+        },
+        set(language: string) {
+          this.$i18n.locale = language;
+          localStorage.language = language;
+        }
+      }
+    },
     mounted() {
-      // Set language by client browser
-      this.$i18n.locale = navigator.language.split("-", 1)[0];
+      // Set language by last save or client browser
+      this.language = localStorage.language || navigator.language.split("-", 1)[0];
     }
   });
 </script>
