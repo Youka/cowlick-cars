@@ -2,19 +2,21 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Vuex from "vuex";
+import VueI18n from "vue-i18n";
 import Vuetify from "vuetify/lib";
 import "@mdi/font/scss/materialdesignicons.scss";
 
 // Extend Vue by plugins
 Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(VueI18n);
 Vue.use(Vuetify);
 
 // Import configurations
 import routes from "./config/routes";
 import store from "./config/store";
+import locales from "./config/locales";
 import theme from "./config/theme";
-import lang from "./config/lang";
 
 // Import components
 import "./main.scss";
@@ -26,8 +28,6 @@ const vueApp = new Vue({
   render: (createElement) => createElement(App), // Render root element
   router: new VueRouter({routes}),  // Register navigation routes
   store: new Vuex.Store(store),  // Register shared data store
-  vuetify: new Vuetify({  // Register initial ui components
-    theme, // Define theme for default components style
-    lang  // Register locales for i18n
-  })
+  i18n: new VueI18n(locales), // Register languages for translation
+  vuetify: new Vuetify({theme}) // Register initial ui components
 });

@@ -1,8 +1,8 @@
 export default {
     // Active language
-    current: "de",
+    locale: "de",
     // Available languages
-    locales: {
+    messages: {
         // English
         en: {
             app: {
