@@ -3,7 +3,7 @@
     <v-card>
       <v-card-title>{{$t("home.message")}}</v-card-title>
       <v-card-text>
-        {{message}}
+        {{$t(message)}}
         <v-divider></v-divider>
         <img src="../../assets/images/ayaya.png" width=100 />
       </v-card-text>
@@ -17,7 +17,7 @@
   export default Vue.extend({
     data() {
       return {
-        message: this.$t("home.hello")
+        message: "home.hello"
       };
     }
   });
