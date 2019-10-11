@@ -5,7 +5,7 @@
       <v-card-text>
         {{$t(message)}}
         <v-divider></v-divider>
-        <img src="../../assets/images/ayaya.png" width=100 />
+        <v-img :src="require('../../assets/images/ayaya.png')" width=100 />
       </v-card-text>
     </v-card>
   </v-container>

@@ -10,7 +10,7 @@
     </v-navigation-drawer>
     <!-- Top navigation -->
     <v-app-bar app>
-      <v-app-bar-nav-icon v-on:click="showNavigation = !showNavigation" />
+      <v-app-bar-nav-icon @click="showNavigation = !showNavigation" />
     </v-app-bar>
     <!-- Main content -->
     <v-content>

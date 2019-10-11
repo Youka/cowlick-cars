@@ -3,14 +3,14 @@
     <v-tabs>
       <v-tab>{{$t("test.session")}}</v-tab>
       <v-tab-item class="pa-3">
-        <v-btn v-on:click="login">{{$t("test.login")}}<v-icon right>mdi-login</v-icon></v-btn>
-        <v-btn v-on:click="logout">{{$t("test.logout")}}<v-icon right>mdi-logout</v-icon></v-btn>
-        <v-btn v-on:click="session">{{$t("test.session")}}<v-icon right>mdi-information</v-icon></v-btn>
+        <v-btn @click="login">{{$t("test.login")}}<v-icon right>mdi-login</v-icon></v-btn>
+        <v-btn @click="logout">{{$t("test.logout")}}<v-icon right>mdi-logout</v-icon></v-btn>
+        <v-btn @click="session">{{$t("test.session")}}<v-icon right>mdi-information</v-icon></v-btn>
       </v-tab-item>
       <v-tab>{{$t("test.counter")}}</v-tab>
       <v-tab-item class="pa-3">
-        <v-text-field v-model="count" v-bind:label="$t('test.counter')" readonly outlined></v-text-field>
-        <v-btn v-on:click="increment">{{$t("test.incrementCounter")}}</v-btn>
+        <v-text-field v-model="count" :label="$t('test.counter')" readonly outlined></v-text-field>
+        <v-btn @click="increment">{{$t("test.incrementCounter")}}</v-btn>
       </v-tab-item>
     </v-tabs>
   </v-container>
