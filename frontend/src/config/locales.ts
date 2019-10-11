@@ -1,6 +1,8 @@
 export default {
-    // Active language
-    locale: "de",
+    // Active language (at initialization)
+    locale: "en",
+    // Fallback language
+    fallbackLocale: "en",
     // Available languages
     messages: {
         // English

@@ -23,11 +23,20 @@
 </template>
 
 <script lang="ts">
-  export default {
+  // Imports
+  import Vue from "vue";
+
+  // Extend vue instance of component
+  export default Vue.extend({
     data: () => ({
+      // Show navigation initially
       showNavigation: true
-    })
-  };
+    }),
+    mounted() {
+      // Set language by client browser
+      this.$i18n.locale = navigator.language.split("-", 1)[0];
+    }
+  });
 </script>
 
 <style lang="scss">
