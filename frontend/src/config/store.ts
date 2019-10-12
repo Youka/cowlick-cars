@@ -4,8 +4,7 @@ import createPersistedState from "vuex-persistedstate";
 // State
 const state = {
     language: navigator.language.split("-", 1)[0],
-    navigationVisible: true,
-    count: 0
+    navigationVisible: true
 };
 type State = typeof state;
 
@@ -18,9 +17,6 @@ export default {
         },
         navigationVisible(st: State, navigationVisible: boolean) {
             st.navigationVisible = navigationVisible;
-        },
-        increment(st: State) {
-            st.count++;
         }
     },
     plugins: [createPersistedState({storage: window.localStorage})]

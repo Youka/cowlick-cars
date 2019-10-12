@@ -10,7 +10,7 @@
       <v-tab>{{$t("test.counter")}}</v-tab>
       <v-tab-item class="pa-3">
         <v-text-field v-model="count" :label="$t('test.counter')" readonly outlined></v-text-field>
-        <v-btn @click="increment">{{$t("test.incrementCounter")}}</v-btn>
+        <v-btn @click="count++">{{$t("test.incrementCounter")}}</v-btn>
       </v-tab-item>
     </v-tabs>
   </v-container>
@@ -18,19 +18,14 @@
 
 <script lang="ts">
   // Imports
-  import {mapState, mapMutations} from "vuex";
   import AuthService from "../../services/auth-service";
 
   // Extend vue instance of component
   export default {
-    // Map shared data store into component
-    computed: mapState([
-      "count"
-    ]),
+    data: () => ({
+      count: 0
+    }),
     methods: {
-      ...mapMutations([
-        "increment"
-      ]),
       // Service requests
       login() {
         AuthService.login("admin", "admin")
