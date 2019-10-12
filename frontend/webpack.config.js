@@ -1,7 +1,6 @@
 // Import plugins
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
@@ -130,13 +129,7 @@ module.exports = {
       // Provide project configuration as template parameters
       templateParameters: require("./package.json"),
       // Add favicon to template
-      favicon: "./src/favicon.png",
-      // Put scripts in html head (instead of body bottom; reason see below)
-      inject: "head"
-    }),
-    // Extend script tags by html plugin
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: "defer"
+      favicon: "./src/favicon.png"
     }),
     // Pack resolved CSS into file (instead of multiple style tags by default)
     new MiniCssExtractPlugin({
