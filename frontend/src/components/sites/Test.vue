@@ -18,13 +18,13 @@
 
 <script lang="ts">
   // Imports
-  import {mapGetters, mapMutations} from "vuex";
+  import {mapState, mapMutations} from "vuex";
   import AuthService from "../../services/auth-service";
 
   // Extend vue instance of component
   export default {
     // Map shared data store into component
-    computed: mapGetters([
+    computed: mapState([
       "count"
     ]),
     methods: {

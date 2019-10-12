@@ -36,32 +36,33 @@
   // Extend vue instance of component
   export default Vue.extend({
     data: () => ({
-      // Show navigation by last save or initially
-      navigationVisible: localStorage.navigationVisible !== undefined ? localStorage.navigationVisible === "true" : true,
       // Copy title from html document
       title: document.title
     }),
     computed: {
-      // Locale wrapper with offline storage
+      // Map language to shared data store and set i18n
       language: {
         get() {
-          return this.$i18n.locale;
+          return this.$store.state.language;
         },
         set(language: string) {
+          this.$store.commit("language", language);
           this.$i18n.locale = language;
-          localStorage.language = language;
+        }
+      },
+      // Map navigation visibility to shared data store
+      navigationVisible: {
+        get() {
+          return this.$store.state.navigationVisible;
+        },
+        set(navigationVisible: boolean) {
+          this.$store.commit("navigationVisible", navigationVisible);
         }
       }
     },
-    watch: {
-      // Remember navigation change
-      navigationVisible(visible: boolean) {
-        localStorage.navigationVisible = visible;
-      }
-    },
     mounted() {
-      // Set language by last save or client browser
-      this.language = localStorage.language || navigator.language.split("-", 1)[0];
+      // Initialize i18n from shared state
+      this.$i18n.locale = this.$store.state.language;
     }
   });
 </script>
