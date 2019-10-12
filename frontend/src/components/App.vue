@@ -2,7 +2,7 @@
   <!-- Vue application root -->
   <v-app>
     <!-- Side navigation -->
-    <v-navigation-drawer app v-model="showNavigation">
+    <v-navigation-drawer app v-model="navigationVisible">
       <v-list nav>
         <v-list-item to="/">{{$t("app.home")}}</v-list-item>
         <v-list-item to="/test">{{$t("app.test")}}</v-list-item>
@@ -10,7 +10,7 @@
     </v-navigation-drawer>
     <!-- Top navigation -->
     <v-app-bar app fixed elevate-on-scroll>
-      <v-app-bar-nav-icon @click="showNavigation = !showNavigation" />
+      <v-app-bar-nav-icon @click="navigationVisible = !navigationVisible" />
       <v-toolbar-title>{{title}}</v-toolbar-title>
       <v-spacer />
       <v-select
@@ -36,8 +36,8 @@
   // Extend vue instance of component
   export default Vue.extend({
     data: () => ({
-      // Show navigation initially
-      showNavigation: true,
+      // Show navigation by last save or initially
+      navigationVisible: localStorage.navigationVisible !== undefined ? localStorage.navigationVisible === "true" : true,
       // Copy title from html document
       title: document.title
     }),
@@ -51,6 +51,12 @@
           this.$i18n.locale = language;
           localStorage.language = language;
         }
+      }
+    },
+    watch: {
+      // Remember navigation change
+      navigationVisible(visible: boolean) {
+        localStorage.navigationVisible = visible;
       }
     },
     mounted() {
