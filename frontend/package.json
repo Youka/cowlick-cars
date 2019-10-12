@@ -1,6 +1,7 @@
 {
   "name": "cowlick-cars_webapp",
   "version": "0.1.0",
+  "display": "Cowlick cars",
   "description": "Frontend of cowlick-cars management platform.",
   "keywords": [
     "frontend",
