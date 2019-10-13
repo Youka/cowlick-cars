@@ -18,8 +18,18 @@ allprojects {
 	}
 }
 subprojects {
+	// Activate plugins for scope
 	apply(plugin = "kotlin")
 	apply(plugin = "kotlin-spring")
+	// Set target JVM version for compilation
+	tasks.compileJava {
+		sourceCompatibility = "1.8"
+		targetCompatibility = sourceCompatibility
+	}
+	tasks.compileKotlin {
+		kotlinOptions.jvmTarget = "1.8"
+	}
+	// Add dependencies
 	dependencies {
 		// Kotlin
 		compileOnly("org.jetbrains.kotlin:kotlin-stdlib-jdk8")	// Version provided by plugin
