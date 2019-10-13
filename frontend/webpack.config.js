@@ -150,7 +150,7 @@ module.exports = {
   ],
   // Optimize bundling
   optimization: {
-    // Improve caching by separate vendor resources (see <https://webpack.js.org/plugins/split-chunks-plugin/#optimizationsplitchunks>)
+    // Improve caching by vendor resources in separate chunk (see <https://webpack.js.org/plugins/split-chunks-plugin/#optimizationsplitchunks>)
     splitChunks: {
       name: "vendors",
       chunks: "all"
