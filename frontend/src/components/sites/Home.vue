@@ -1,6 +1,10 @@
 <template>
   <v-container fluid>
-    <clc-hello />
+    <v-row>
+      <v-col lg="6" md="12">
+        <clc-hello />
+      </v-col>
+    </v-row>
   </v-container>
 </template>
 
