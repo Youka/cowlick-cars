@@ -25,6 +25,7 @@
     </v-content>
     <!-- Footer -->
     <v-footer app>
+      <div class="font-italic">Work in progress</div>
     </v-footer>
   </v-app>
 </template>
