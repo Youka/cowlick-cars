@@ -1,24 +1,15 @@
 <template>
   <v-container fluid>
-    <v-card>
-      <v-card-title>{{$t("home.message")}}</v-card-title>
-      <v-card-text>
-        {{$t(message)}}
-        <v-divider></v-divider>
-        <v-img :src="require('../../assets/images/ayaya.png')" width=100 />
-      </v-card-text>
-    </v-card>
+    <clc-hello />
   </v-container>
 </template>
 
 <script lang="ts">
-  import Vue from "vue";
+  import Hello from "../tiles/Hello.vue";
 
-  export default Vue.extend({
-    data() {
-      return {
-        message: "home.hello"
-      };
+  export default {
+    components: {
+      "clc-hello": Hello
     }
-  });
+  };
 </script>

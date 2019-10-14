@@ -12,7 +12,7 @@ export default {
                 home: "Home",
                 test: "Test"
             },
-            home: {
+            hello: {
                 message: "Message",
                 hello: "Hello world!"
             },
@@ -31,7 +31,7 @@ export default {
                 home: "Startseite",
                 test: "Test"
             },
-            home: {
+            hello: {
                 message: "Nachricht",
                 hello: "Hallo Welt!"
             },
