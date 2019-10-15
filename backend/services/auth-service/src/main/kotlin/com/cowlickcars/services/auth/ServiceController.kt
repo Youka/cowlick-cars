@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 import java.io.NotActiveException
@@ -32,6 +33,9 @@ class ServiceController(
 
 	@GetMapping("/fatal")
 	fun getFatal(): Nothing = throw NotActiveException("Uncatched exception!!!")
+
+	@GetMapping("/mypath/{group}/{method}")
+	fun getMyPath(@PathVariable group: String, @PathVariable method: String) = "Group: $group - Method: $method"
 
 	@GetMapping("/session")
 	fun getSession(auth: Authentication?) = auth?.run {
