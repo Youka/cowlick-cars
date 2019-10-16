@@ -5,6 +5,7 @@
 		<Property name="stackTraceFilters">
 			java,
 			jdk,
+			sun,
 			org.springframework,
 			org.apache
 		</Property>
