@@ -8,7 +8,8 @@ export default {
             url + "/login",
             {
                 method: "POST",
-                body: new URLSearchParams({username, password})
+                body: new URLSearchParams({username, password}),
+                credentials: "include"
             }
         );
         return response.redirected ? !response.url.match("\\?error$") : response.ok;
@@ -17,7 +18,8 @@ export default {
         await fetch(
             url + "/logout",
             {
-                method: "POST"
+                method: "POST",
+                credentials: "include"
             }
         );
     },
@@ -26,7 +28,8 @@ export default {
             url + "/session",
             {
                 method: "GET",
-                cache: "no-cache"
+                cache: "no-cache",
+                credentials: "include"
             }
         );
         return {
