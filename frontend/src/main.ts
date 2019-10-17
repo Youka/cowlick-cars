@@ -5,6 +5,7 @@ import Vuex from "vuex";
 import VueI18n from "vue-i18n";
 import Vuetify from "vuetify/lib";
 import "@mdi/font/scss/materialdesignicons.scss";
+import * as OfflinePluginRuntime from "offline-plugin/runtime";
 
 // Extend Vue by plugins
 Vue.use(VueRouter);
@@ -31,3 +32,6 @@ const vueApp = new Vue({
   i18n: new VueI18n(locales), // Register languages for translation
   vuetify: new Vuetify({theme}) // Register initial ui components
 });
+
+// Enable offline mode
+OfflinePluginRuntime.install();

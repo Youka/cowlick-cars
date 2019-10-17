@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const VueLoaderPlugin = require("vue-loader/lib/plugin");
 const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
+const OfflinePlugin = require("offline-plugin");
 
 // Detect output directory
 const path = require("path"),
@@ -146,6 +147,13 @@ module.exports = {
       threshold: 4096,
       // Faster re-builds
       cache: true
+    }),
+    // Support offline mode by browser caching
+    new OfflinePlugin({
+      appShell: "/",
+      responseStrategy: "network-first",
+      updateStrategy: "all",
+      version: new Date().toISOString()
     })
   ],
   // Optimize bundling
