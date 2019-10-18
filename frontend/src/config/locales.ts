@@ -8,6 +8,10 @@ export default {
         // English
         en: {
             app: {
+                mode: {
+                    online: "Online mode",
+                    offline: "Offline mode"
+                },
                 language: "Language",
                 home: "Home",
                 test: "Test"
@@ -27,6 +31,10 @@ export default {
         // German
         de: {
             app: {
+                mode: {
+                    online: "Online Modus",
+                    offline: "Offline Modus"
+                },
                 language: "Sprache",
                 home: "Startseite",
                 test: "Test"

@@ -25,7 +25,8 @@
     </v-content>
     <!-- Footer -->
     <v-footer app>
-      <div class="font-italic">Work in progress</div>
+      <v-alert v-if="!offline" type="success" dense>{{$t("app.mode.online")}}</v-alert>
+      <v-alert v-if="offline" type="warning" dense>{{$t("app.mode.offline")}}</v-alert>
     </v-footer>
   </v-app>
 </template>
@@ -38,7 +39,9 @@
   export default Vue.extend({
     data: () => ({
       // Copy title from html document
-      title: document.title
+      title: document.title,
+      // Copy online mode from browser
+      offline: !navigator.onLine
     }),
     computed: {
       // Map language to shared data store and set i18n
