@@ -34,6 +34,7 @@
 <script lang="ts">
   // Imports
   import Vue from "vue";
+  import {mapFields} from "vuex-map-fields";
 
   // Extend vue instance of component
   export default Vue.extend({
@@ -43,25 +44,13 @@
       // Copy online mode from browser
       offline: !navigator.onLine
     }),
-    computed: {
-      // Map language to shared data store and set i18n
-      language: {
-        get() {
-          return this.$store.state.language;
-        },
-        set(language: string) {
-          this.$store.commit("language", language);
-          this.$i18n.locale = language;
-        }
-      },
-      // Map navigation visibility to shared data store
-      navigationVisible: {
-        get() {
-          return this.$store.state.navigationVisible;
-        },
-        set(navigationVisible: boolean) {
-          this.$store.commit("navigationVisible", navigationVisible);
-        }
+    computed: mapFields([
+      "language",
+      "navigationVisible"
+    ]),
+    watch: {
+      language(newLanguage) {
+        this.$i18n.locale = newLanguage;
       }
     },
     mounted() {
