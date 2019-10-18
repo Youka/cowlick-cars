@@ -25,8 +25,8 @@
     </v-content>
     <!-- Footer -->
     <v-footer app>
-      <v-alert v-if="!offline" type="success" dense>{{$t("app.mode.online")}}</v-alert>
-      <v-alert v-if="offline" type="warning" dense>{{$t("app.mode.offline")}}</v-alert>
+      <v-alert v-if="online" type="success" dense>{{$t("app.mode.online")}}</v-alert>
+      <v-alert v-if="!online" type="warning" dense>{{$t("app.mode.offline")}}</v-alert>
     </v-footer>
   </v-app>
 </template>
@@ -42,7 +42,7 @@
       // Copy title from html document
       title: document.title,
       // Copy online mode from browser
-      offline: !navigator.onLine
+      online: navigator.onLine
     }),
     computed: mapFields([
       "language",
@@ -56,6 +56,9 @@
     mounted() {
       // Initialize i18n from shared state
       this.$i18n.locale = this.$store.state.language;
+      // Observe online mode
+      window.addEventListener("online", () => this.online = true);
+      window.addEventListener("offline", () => this.online = false);
     }
   });
 </script>
