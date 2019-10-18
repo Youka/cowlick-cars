@@ -20,3 +20,7 @@ Web view of cowlick-cars management platform.
 ## Browser support
 Cowlick cars supports all modern browsers.  
 This includes Microsoft Edge but **not IE11**!
+
+## Recommended tools
+* [VSCode](https://code.visualstudio.com/) with extensions [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur) and [EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+* [Firefox](https://www.mozilla.org/firefox/new/) with extension [Vue DevTools](https://addons.mozilla.org/de/firefox/addon/vue-js-devtools/)
