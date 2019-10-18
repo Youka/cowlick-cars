@@ -7,6 +7,9 @@ const VuetifyLoaderPlugin = require("vuetify-loader/lib/plugin");
 const CompressionPlugin = require("compression-webpack-plugin");
 const OfflinePlugin = require("offline-plugin");
 
+// Import project information from NPM
+const project = require("./package.json");
+
 // Detect output directory
 const path = require("path"),
     tomcatDir = process.env["CATALINA_HOME"],
@@ -127,8 +130,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       // HTML template to extend by js+css resources and parameters
       template: "./src/index.ejs",
-      // Provide project configuration as template parameters
-      templateParameters: require("./package.json"),
+      // Provide project information as template parameters
+      templateParameters: project,
       // Add favicon to template
       favicon: "./src/favicon.png"
     }),
@@ -153,7 +156,10 @@ module.exports = {
       appShell: "/",
       responseStrategy: "network-first",
       updateStrategy: "all",
-      version: new Date().toISOString()
+      version: new Date().toISOString(),
+      ServiceWorker: {
+        cacheName: project.name + "-" + project.version
+      }
     })
   ],
   // Optimize bundling
