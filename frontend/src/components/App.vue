@@ -4,8 +4,8 @@
     <!-- Side navigation -->
     <v-navigation-drawer app v-model="navigationVisible">
       <v-list nav>
-        <v-list-item to="/">{{$t("app.home")}}</v-list-item>
-        <v-list-item to="/test">{{$t("app.test")}}</v-list-item>
+        <v-list-item to="/">{{$t("nav.home")}}</v-list-item>
+        <v-list-item to="/test">{{$t("nav.test")}}</v-list-item>
       </v-list>
     </v-navigation-drawer>
     <!-- Top navigation -->
@@ -13,11 +13,7 @@
       <v-app-bar-nav-icon @click="navigationVisible = !navigationVisible" />
       <v-toolbar-title>{{title}}</v-toolbar-title>
       <v-spacer />
-      <v-select
-        v-model="language"
-        :items="Object.keys($i18n.messages)"
-        :label="$t('app.language')"
-        hide-details outlined />
+      <clc-language />
     </v-app-bar>
     <!-- Main content -->
     <v-content>
@@ -32,29 +28,22 @@
 
 <script lang="ts">
   // Imports
-  import Vue from "vue";
   import {mapFields} from "vuex-map-fields";
+  import Language from "./widgets/Language.vue";
 
   // Extend vue instance of component
-  export default Vue.extend({
+  export default {
     data: () => ({
       // Copy title from html document
       title: document.title,
     }),
     computed: mapFields([
-      "language",
       "navigationVisible"
     ]),
-    watch: {
-      language(newLanguage) {
-        this.$i18n.locale = newLanguage;
-      }
-    },
-    mounted() {
-      // Initialize i18n from shared state
-      this.$i18n.locale = this.$store.state.language;
+    components: {
+      "clc-language": Language
     }
-  });
+  };
 </script>
 
 <style lang="scss">

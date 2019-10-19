@@ -7,11 +7,7 @@ export default {
     messages: {
         // English
         en: {
-            app: {
-                mode: {
-                    online: "Online mode",
-                    offline: "Offline mode"
-                },
+            nav: {
                 language: "Language",
                 home: "Home",
                 test: "Test"
@@ -30,11 +26,7 @@ export default {
         },
         // German
         de: {
-            app: {
-                mode: {
-                    online: "Online Modus",
-                    offline: "Offline Modus"
-                },
+            nav: {
                 language: "Sprache",
                 home: "Startseite",
                 test: "Test"
