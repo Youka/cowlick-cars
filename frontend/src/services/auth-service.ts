@@ -8,7 +8,7 @@ export default {
             url + "/login",
             {
                 method: "POST",
-                body: new URLSearchParams({username, password}),
+                body: new URLSearchParams({ username, password }),
                 credentials: "include"
             }
         );

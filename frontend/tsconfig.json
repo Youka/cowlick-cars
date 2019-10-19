@@ -12,7 +12,9 @@
         "target": "es5",
         "moduleResolution": "node",
         "allowJs": true,
-        "types": ["vuetify"],
+        "types": [
+            "vuetify"
+        ],
         "lib": [
             "dom",
             "es5",

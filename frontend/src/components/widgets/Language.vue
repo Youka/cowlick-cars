@@ -9,7 +9,7 @@
 <script lang="ts">
     // Imports
     import Vue from "vue";
-    import {mapFields} from "vuex-map-fields";
+    import { mapFields } from "vuex-map-fields";
 
     // Extend vue instance of component
     export default Vue.extend({

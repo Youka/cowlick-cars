@@ -25,12 +25,12 @@ import App from "./components/App.vue";
 
 // Mount Vue instance for application
 const vueApp = new Vue({
-  el: "#app", // Hook root element
-  render: (createElement) => createElement(App), // Render root element
-  router: new VueRouter({routes}),  // Register navigation routes
-  store: new Vuex.Store(store),  // Register shared data store
-  i18n: new VueI18n(locales), // Register languages for translation
-  vuetify: new Vuetify({theme}) // Register initial ui components
+    el: "#app", // Hook root element
+    render: (createElement) => createElement(App), // Render root element
+    router: new VueRouter({ routes }),  // Register navigation routes
+    store: new Vuex.Store(store),  // Register shared data store
+    i18n: new VueI18n(locales), // Register languages for translation
+    vuetify: new Vuetify({ theme }) // Register initial ui components
 });
 
 // Enable offline mode
