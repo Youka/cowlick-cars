@@ -1,7 +1,7 @@
 package com.cowlickcars.services.auth
 
 import org.apache.logging.log4j.LogManager
-import org.springframework.http.HttpHeaders
+import org.springframework.dao.DataAccessException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.jdbc.core.BeanPropertyRowMapper
@@ -9,52 +9,27 @@ import org.springframework.jdbc.core.JdbcTemplate
 import org.springframework.security.access.prepost.PreAuthorize
 import org.springframework.security.core.Authentication
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
-import java.io.NotActiveException
-import java.rmi.activation.ActivationException
-import java.time.ZonedDateTime
 
 @RestController
 class ServiceController(
 	private val jdbc: JdbcTemplate
 ) {
+	// Static
 	companion object {
 		private val log = LogManager.getLogger(ServiceController::class.java)
 	}
 
-	@GetMapping("/error")
-	fun getError() = try {
-		throw ActivationException("Test exception :p")
-	} catch (e: Exception) {
-		log.error("Catched exception!", e)
-	}
-
-	@GetMapping("/fatal")
-	fun getFatal(): Nothing = throw NotActiveException("Uncatched exception!!!")
-
-	@GetMapping("/mypath/{group}/{method}")
-	fun getMyPath(@PathVariable group: String, @PathVariable method: String) = "Group: $group - Method: $method"
-
-	@GetMapping("/session")
-	fun getSession(auth: Authentication?) = auth?.run {
-		ResponseEntity(
-			auth,
-			HttpHeaders().apply {
-				setExpires(ZonedDateTime.now().plusMinutes(120))
-			},
-			HttpStatus.ACCEPTED
-		)
-	}
-
+	// Interfaces
 	@GetMapping("/info")
+	fun getInfoSelf(auth: Authentication) = this.userInfo(auth.name)
+
+	@GetMapping("/info_admin")
 	@PreAuthorize("hasAuthority('administrator')")
-	fun getInfo(@RequestParam username: String) = this.jdbc.queryForObject(
-		"SELECT * FROM auth.v_enabled_users WHERE username = ?",
-		BeanPropertyRowMapper(UserInfo::class.java),
-		username
-	)
+	fun getInfoUsername(@RequestParam username: String) = this.userInfo(username)
+
+	// Helpers
 	data class UserInfo(
 		var username: String = "",
 		var roles: String = "",
@@ -62,4 +37,23 @@ class ServiceController(
 		var lastName: String = "",
 		var eMail: String = ""
 	)
+	private fun userInfo(username: String) =
+		try {
+			this.jdbc.queryForObject(
+				"SELECT * FROM auth.v_enabled_users WHERE username = ?",
+				BeanPropertyRowMapper(UserInfo::class.java),
+				username
+			)?.run {
+				ResponseEntity(
+					this,
+					HttpStatus.FOUND
+				)
+			}
+		} catch (e: DataAccessException) {
+			log.error("User '$username' not found!", e)
+			ResponseEntity(
+				HttpStatus.NOT_FOUND.reasonPhrase,
+				HttpStatus.NOT_FOUND
+			)
+		}
 }

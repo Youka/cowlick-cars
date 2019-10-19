@@ -25,7 +25,7 @@ export default {
     },
     async session() {
         const response = await fetch(
-            url + "/session",
+            url + "/info",
             {
                 method: "GET",
                 cache: "no-cache",
