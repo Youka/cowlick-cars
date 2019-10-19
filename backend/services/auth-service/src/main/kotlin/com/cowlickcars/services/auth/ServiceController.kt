@@ -46,9 +46,12 @@ class ServiceController(
 			)?.run {
 				ResponseEntity(
 					this,
-					HttpStatus.FOUND
+					HttpStatus.OK
 				)
-			}
+			} ?: ResponseEntity(
+				HttpStatus.NO_CONTENT.reasonPhrase,
+				HttpStatus.NO_CONTENT
+			)
 		} catch (e: DataAccessException) {
 			log.error("User '$username' not found!", e)
 			ResponseEntity(
