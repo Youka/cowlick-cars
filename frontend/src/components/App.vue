@@ -21,7 +21,7 @@
         </v-content>
         <!-- Footer -->
         <v-footer app>
-            <v-alert type="info" dense>Work in progress</v-alert>
+            <v-chip color="info">Work in progress</v-chip>
         </v-footer>
     </v-app>
 </template>

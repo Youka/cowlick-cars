@@ -16,11 +16,13 @@ export default {
                 title: "Hello world!",
                 message: "Welcome to this portal."
             },
-            test: {
-                session: "Session",
+            login: {
+                title: "Session",
                 login: "Login",
                 logout: "Logout",
-                info: "Info",
+                info: "Info"
+            },
+            playground: {
                 counter: "Counter",
                 incrementCounter: "Increment counter"
             }
@@ -36,11 +38,13 @@ export default {
                 title: "Hallo Welt!",
                 message: "Willkommen in diesem Portal."
             },
-            test: {
-                session: "Sitzung",
+            login: {
+                title: "Sitzung",
                 login: "Anmelden",
                 logout: "Abmelden",
-                info: "Information",
+                info: "Information"
+            },
+            playground: {
                 counter: "Zähler",
                 incrementCounter: "Zähler erhöhen"
             }

@@ -1,15 +1,15 @@
 <template>
     <v-container fluid>
-        <clc-login />
+        <clc-playground />
     </v-container>
 </template>
 
 <script lang="ts">
-    import Login from "../tiles/Login.vue";
+    import Playground from "../tiles/Playground.vue";
 
     export default {
         components: {
-            "clc-login": Login
+            "clc-playground": Playground
         }
     };
 </script>
