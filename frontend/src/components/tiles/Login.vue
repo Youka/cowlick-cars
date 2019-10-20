@@ -4,7 +4,7 @@
         <v-tab-item class="pa-3">
             <v-btn @click="login">{{$t("test.login")}}<v-icon right>mdi-login</v-icon></v-btn>
             <v-btn @click="logout">{{$t("test.logout")}}<v-icon right>mdi-logout</v-icon></v-btn>
-            <v-btn @click="session">{{$t("test.session")}}<v-icon right>mdi-information</v-icon></v-btn>
+            <v-btn @click="info">{{$t("test.info")}}<v-icon right>mdi-information</v-icon></v-btn>
         </v-tab-item>
         <v-tab>{{$t("test.counter")}}</v-tab>
         <v-tab-item class="pa-3">
@@ -37,8 +37,8 @@
                     alert("Logout!")
                 );
             },
-            session() {
-                authService.session()
+            info() {
+                authService.info()
                 .then((response) =>
                     alert("Status: " + response.status + "\nData: " + JSON.stringify(response.data))
                 );

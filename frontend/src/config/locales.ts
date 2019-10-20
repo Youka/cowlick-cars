@@ -18,9 +18,10 @@ export default {
             },
             test: {
                 session: "Session",
-                counter: "Counter",
                 login: "Login",
                 logout: "Logout",
+                info: "Info",
+                counter: "Counter",
                 incrementCounter: "Increment counter"
             }
         },
@@ -37,9 +38,10 @@ export default {
             },
             test: {
                 session: "Sitzung",
-                counter: "Zähler",
                 login: "Anmelden",
                 logout: "Abmelden",
+                info: "Information",
+                counter: "Zähler",
                 incrementCounter: "Zähler erhöhen"
             }
         }
