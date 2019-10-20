@@ -13,8 +13,8 @@ export default {
                 test: "Test"
             },
             hello: {
-                message: "Message",
-                hello: "Hello world!"
+                title: "Hello world!",
+                message: "Welcome to this portal."
             },
             test: {
                 session: "Session",
@@ -33,8 +33,8 @@ export default {
                 test: "Test"
             },
             hello: {
-                message: "Nachricht",
-                hello: "Hallo Welt!"
+                title: "Hallo Welt!",
+                message: "Willkommen in diesem Portal."
             },
             test: {
                 session: "Sitzung",

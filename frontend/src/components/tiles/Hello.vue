@@ -1,18 +1,13 @@
 <template>
     <v-card>
-        <v-card-title>{{$t("hello.message")}}</v-card-title>
+        <v-card-title>{{$t("hello.title")}}</v-card-title>
         <v-card-text>
-            {{$t(message)}}
-            <v-divider></v-divider>
-            <v-img :src="require('../../assets/images/ayaya.png')" width=100 />
+            <v-img :src="require('../../assets/images/hello.jpeg')" width=400>
+                <span class="black--text">{{$t("hello.message")}}</span>
+                <template v-slot:placeholder>
+                    <v-progress-circular indeterminate />
+                </template>
+            </v-img>
         </v-card-text>
     </v-card>
 </template>
-
-<script lang="ts">
-    export default {
-        data: () => ({
-            message: "hello.hello"
-        })
-    };
-</script>
