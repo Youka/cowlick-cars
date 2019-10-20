@@ -23,8 +23,15 @@ export default {
                 info: "Info"
             },
             playground: {
-                counter: "Counter",
-                incrementCounter: "Increment counter"
+                counter: {
+                    title: "Counter",
+                    incrementCounter: "Increment counter"
+                },
+                products: {
+                    title: "Products",
+                    search: "Search",
+                    noData: "No data"
+                }
             }
         },
         // German
@@ -45,8 +52,15 @@ export default {
                 info: "Information"
             },
             playground: {
-                counter: "Zähler",
-                incrementCounter: "Zähler erhöhen"
+                counter: {
+                    title: "Zähler",
+                    incrementCounter: "Zähler erhöhen"
+                },
+                products: {
+                    title: "Produkte",
+                    search: "Suche",
+                    noData: "Keine Daten"
+                }
             }
         }
     }
