@@ -2,5 +2,5 @@
 /flyway/runtime/*.jar
 /flyway/drivers/*.jar
 
-# Flyway configuration
+# Flyway (production) configuration
 /flyway/flyway.config
