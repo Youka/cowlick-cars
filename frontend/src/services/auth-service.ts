@@ -1,40 +1,15 @@
-// Service access point
-const url = "/auth-service";
+import ServiceBase from "./service-base";
 
-// Service object
-export default {
-    async login(username: string, password: string) {
-        const response = await fetch(
-            url + "/login",
-            {
-                method: "POST",
-                body: new URLSearchParams({ username, password }),
-                credentials: "include"
-            }
-        );
-        return response.redirected ? !response.url.match("\\?error$") : response.ok;
-    },
-    async logout() {
-        await fetch(
-            url + "/logout",
-            {
-                method: "POST",
-                credentials: "include"
-            }
-        );
-    },
-    async session() {
-        const response = await fetch(
-            url + "/info",
-            {
-                method: "GET",
-                cache: "no-cache",
-                credentials: "include"
-            }
-        );
+class AuthService extends ServiceBase {
+    constructor() { super("/auth-service"); }
+
+    public async session() {
+        const response = await this.fetch("/info");
         return {
             status: response.status,
             data: response.ok ? await response.json() : null
         };
     }
-};
+}
+
+export default new AuthService();

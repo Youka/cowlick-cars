@@ -16,7 +16,7 @@
 
 <script lang="ts">
     // Imports
-    import AuthService from "../../services/auth-service";
+    import authService from "../../services/auth-service";
 
     // Extend vue instance of component
     export default {
@@ -26,19 +26,19 @@
         methods: {
             // Service requests
             login() {
-                AuthService.login("admin", "admin")
+                authService.login("admin", "admin")
                 .then((success) =>
                     alert("Login: " + success)
                 );
             },
             logout() {
-                AuthService.logout()
+                authService.logout()
                 .then(() =>
                     alert("Logout!")
                 );
             },
             session() {
-                AuthService.session()
+                authService.session()
                 .then((response) =>
                     alert("Status: " + response.status + "\nData: " + JSON.stringify(response.data))
                 );
