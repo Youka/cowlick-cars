@@ -155,10 +155,10 @@ module.exports = {
 		new OfflinePlugin({
 			appShell: "/",
 			responseStrategy: "network-first",
-			updateStrategy: "all",
 			version: new Date().toISOString(),
 			ServiceWorker: {
-				cacheName: project.name + "-" + project.version
+                cacheName: project.name + "-" + project.version,
+                events: true
 			}
 		})
 	],

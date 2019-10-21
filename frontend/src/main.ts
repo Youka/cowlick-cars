@@ -34,4 +34,6 @@ const vueApp = new Vue({
 });
 
 // Enable offline mode
-OfflinePluginRuntime.install();
+OfflinePluginRuntime.install({
+    onUpdateReady: () => OfflinePluginRuntime.applyUpdate()
+});
