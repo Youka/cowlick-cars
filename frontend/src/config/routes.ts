@@ -1,7 +1,7 @@
 import Home from "../components/sites/Home.vue";
-import Test from "../components/sites/Test.vue";
+import Sales from "../components/sites/Sales.vue";
 
 export default [
     { path: "/", component: Home },
-    { path: "/test", component: Test }
+    { path: "/sales", component: Sales }
 ];

@@ -5,7 +5,7 @@
         <v-navigation-drawer app v-model="navigationVisible">
             <v-list nav>
                 <v-list-item to="/">{{$t("nav.home")}}</v-list-item>
-                <v-list-item to="/test">{{$t("nav.test")}}</v-list-item>
+                <v-list-item to="/sales">{{$t("nav.sales")}}</v-list-item>
             </v-list>
         </v-navigation-drawer>
         <!-- Top navigation -->

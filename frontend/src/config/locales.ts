@@ -10,7 +10,7 @@ export default {
             nav: {
                 language: "Language",
                 home: "Home",
-                test: "Test"
+                sales: "Sales"
             },
             hello: {
                 title: "Hello world!",
@@ -39,7 +39,7 @@ export default {
             nav: {
                 language: "Sprache",
                 home: "Startseite",
-                test: "Test"
+                sales: "Vertrieb"
             },
             hello: {
                 title: "Hallo Welt!",
