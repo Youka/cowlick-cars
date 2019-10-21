@@ -27,6 +27,9 @@ export default {
                 counter: {
                     title: "Counter",
                     incrementCounter: "Increment counter"
+                },
+                todos: {
+                    title: "To do"
                 }
             },
             dataSandbox: {
@@ -59,6 +62,9 @@ export default {
                 counter: {
                     title: "Zähler",
                     incrementCounter: "Zähler erhöhen"
+                },
+                todos: {
+                    title: "Erledigungen"
                 }
             },
             dataSandbox: {
