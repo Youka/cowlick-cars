@@ -26,7 +26,9 @@ export default {
                 counter: {
                     title: "Counter",
                     incrementCounter: "Increment counter"
-                },
+                }
+            },
+            dataSandbox: {
                 products: {
                     title: "Products",
                     search: "Search",
@@ -55,7 +57,9 @@ export default {
                 counter: {
                     title: "Zähler",
                     incrementCounter: "Zähler erhöhen"
-                },
+                }
+            },
+            dataSandbox: {
                 products: {
                     title: "Produkte",
                     search: "Suche",
