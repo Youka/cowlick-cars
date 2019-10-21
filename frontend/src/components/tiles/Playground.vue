@@ -32,3 +32,9 @@
         }
     };
 </script>
+
+<style lang="scss" scoped>
+    ul > li {
+        list-style-type: lower-greek;
+    }
+</style>
