@@ -37,6 +37,9 @@ export default {
                     title: "Products",
                     search: "Search",
                     noData: "No data"
+                },
+                temperatures: {
+                    title: "Temperatures"
                 }
             }
         },
@@ -72,6 +75,9 @@ export default {
                     title: "Produkte",
                     search: "Suche",
                     noData: "Keine Daten"
+                },
+                temperatures: {
+                    title: "Temperaturen"
                 }
             }
         }

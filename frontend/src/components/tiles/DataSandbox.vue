@@ -32,6 +32,18 @@
                 </template>
             </v-data-table>
         </v-tab-item>
+        <!-- Chart -->
+        <v-tab>{{$t("dataSandbox.temperatures.title")}}</v-tab>
+        <v-tab-item class="pa-3">
+            <v-sparkline
+                :labels="chart.labels"
+                :value="chart.values"
+                :gradient="chart.gradients"
+                line-width="2"
+                label-size="4"
+                auto-draw
+                />
+        </v-tab-item>
     </v-tabs>
 </template>
 
@@ -93,6 +105,30 @@
                             product: "Boat",
                             price: 32_757
                         }
+                    ]
+                },
+                chart: {
+                    labels: [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                    ],
+                    values: [
+                        20,
+                        17,
+                        19,
+                        29,
+                        31,
+                        15,
+                        10
+                    ],
+                    gradients: [
+                        "red",
+                        "blue"
                     ]
                 }
             };
