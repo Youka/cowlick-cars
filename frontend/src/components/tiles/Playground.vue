@@ -3,8 +3,9 @@
         <!-- Counter -->
         <v-tab>{{$t("playground.counter.title")}}</v-tab>
         <v-tab-item class="pa-3">
-            <v-text-field v-model="count" :label="$t('playground.counter.title')" readonly outlined></v-text-field>
-            <v-btn @click="count++">{{$t("playground.counter.incrementCounter")}}</v-btn>
+            <input type="text" readonly :placeholder="$t('playground.counter.title')" v-model="count" />
+            <hr />
+            <button type="button" @click="count++">{{$t('playground.counter.incrementCounter')}}</button>
         </v-tab-item>
         <!-- List -->
         <v-tab>{{$t("playground.todos.title")}}</v-tab>
@@ -34,7 +35,16 @@
 </script>
 
 <style lang="scss" scoped>
-    ul > li {
-        list-style-type: lower-greek;
+    .v-tabs {
+        input[type="text"] {
+            background-color: black;
+        }
+        button[type="button"] {
+            font-weight: bold;
+            border: 0.5em groove gray;
+        }
+        ul > li {
+            list-style-type: lower-greek;
+        }
     }
 </style>
