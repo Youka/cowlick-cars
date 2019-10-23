@@ -1,10 +1,10 @@
 <template>
     <v-container fluid>
         <v-row>
-            <v-col lg="6" sm="12">
+            <v-col xl="6" lg="6" md="12" sm="12" xs="12">
                 <clc-hello />
             </v-col>
-            <v-col lg="6" sm="12">
+            <v-col xl="6" lg="6" md="12" sm="12" xs="12">
                 <clc-login />
             </v-col>
         </v-row>

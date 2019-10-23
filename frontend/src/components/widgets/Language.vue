@@ -1,9 +1,12 @@
 <template>
-    <v-select
-        v-model="language"
-        :items="Object.keys($i18n.messages)"
-        :label="$t('nav.language')"
-        hide-details outlined />
+    <div class="select-wrapper">
+        <v-select
+            v-model="language"
+            :items="Object.keys($i18n.messages)"
+            :label="$t('nav.language')"
+            prepend-inner-icon="mdi-translate"
+            hide-details outlined />
+    </div>
 </template>
 
 <script lang="ts">
@@ -27,3 +30,9 @@
         }
     });
 </script>
+
+<style lang="scss" scoped>
+    div.select-wrapper {
+        width: 7em;
+    }
+</style>
