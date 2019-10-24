@@ -21,8 +21,13 @@ export default {
                 guest: "Guest",
                 username: "Username",
                 password: "Password",
+                firstName: "First name",
+                lastName: "Last name",
+                email: "E-Mail",
+                roles: "Roles",
                 login: "Login",
-                logout: "Logout"
+                logout: "Logout",
+                info: "Information"
             },
             playground: {
                 counter: {
@@ -60,8 +65,13 @@ export default {
                 guest: "Gast",
                 username: "Nutzername",
                 password: "Passwort",
+                firstName: "Vorname",
+                lastName: "Nachname",
+                email: "E-Mail",
+                roles: "Rollen",
                 login: "Anmelden",
-                logout: "Abmelden"
+                logout: "Abmelden",
+                info: "Information"
             },
             playground: {
                 counter: {

@@ -1,8 +1,8 @@
 <template>
     <v-card>
-        <!-- Menu definition -->
-        <v-menu bottom left offset-y nudge-right transition="slide-y-transition">
-            <!-- Trigger button -->
+        <!-- Menu -->
+        <v-menu bottom left offset-y transition="slide-y-transition">
+            <!-- Open button -->
             <template v-slot:activator="{ on }">
                 <v-btn v-if="session.info" color="success" v-on="on" class="font-weight-bold">
                     {{session.info.username}}
@@ -14,7 +14,7 @@
             <!-- Menu list -->
             <v-list dense>
                 <!-- Login/logout -->
-                <v-list-item v-if="!session.info" @click="form.show = true">
+                <v-list-item v-if="!session.info" @click="form.showDialog = true">
                     <v-list-item-content>
                         {{$t("login.login")}}
                     </v-list-item-content>
@@ -30,14 +30,27 @@
                         <v-icon>mdi-logout</v-icon>
                     </v-list-item-icon>
                 </v-list-item>
+                <!-- User information -->
+                <v-list-item v-if="session.info" @click="session.showDialog = true">
+                    <v-list-item-content>
+                        {{$t("login.info")}}
+                    </v-list-item-content>
+                    <v-list-item-icon>
+                        <v-icon>mdi-information</v-icon>
+                    </v-list-item-icon>
+                </v-list-item>
             </v-list>
         </v-menu>
         <!-- Login form -->
-        <v-dialog width="300" v-model="form.show">
+        <v-dialog width="300" v-model="form.showDialog">
             <v-card light>
+                <!-- Title -->
                 <v-card-title>
-                    {{$t("login.login")}}
+                    <span class="font-weight-bold">{{$t("login.login")}}</span>
+                    <v-spacer />
+                    <v-icon @click="form.showDialog = false">mdi-close</v-icon>
                 </v-card-title>
+                <!-- Input -->
                 <v-card-text>
                     <v-snackbar color="error" :timeout="3000" v-model="form.error">
                         <v-icon>mdi-alert</v-icon>{{$t("login.login")}}<v-icon>mdi-alert</v-icon>
@@ -58,9 +71,29 @@
                         @click:append="form.showPassword = !form.showPassword"
                         @keypress.enter="login" />
                 </v-card-text>
+                <!-- Submit -->
                 <v-card-actions>
                     <v-btn color="info" @click="login">{{$t("login.login")}}</v-btn>
                 </v-card-actions>
+            </v-card>
+        </v-dialog>
+        <!-- Information overlay -->
+        <v-dialog width="300" v-model="session.showDialog">
+            <v-card light>
+                <!-- Title -->
+                <v-card-title>
+                    <span class="font-weight-bold">{{$t("login.info")}}</span>
+                    <v-spacer />
+                    <v-icon @click="session.showDialog = false">mdi-close</v-icon>
+                </v-card-title>
+                <!-- Text -->
+                <v-card-text v-if="session.info">
+                    <v-text-field :label="$t('login.username')" :value="session.info.username" readonly dense />
+                    <v-text-field :label="$t('login.firstName')" :value="session.info.firstName" readonly dense />
+                    <v-text-field :label="$t('login.lastName')" :value="session.info.lastName" readonly dense />
+                    <v-text-field :label="$t('login.email')" :value="session.info.email" readonly dense />
+                    <v-text-field :label="$t('login.roles')" :value="session.info.roles" readonly dense />
+                </v-card-text>
             </v-card>
         </v-dialog>
     </v-card>
@@ -71,19 +104,22 @@
     import authService from "../../services/auth-service";
 
     export default Vue.extend({
+        // Component state
         data: () => ({
             session: {
                 updateInterval: undefined as (undefined | number),
-                info: undefined as (undefined | object)
+                info: undefined as (undefined | object),
+                showDialog: false
             },
             form: {
-                show: false,
-                error: false,
                 username: "",
                 password: "",
-                showPassword: false
+                showPassword: false,
+                showDialog: false,
+                error: false
             }
         }),
+        // Login methods
         methods: {
             login() {
                 authService.login(this.form.username, this.form.password)
@@ -91,7 +127,7 @@
                     this.update();
                     this.form.username = this.form.password = "";
                     if (success) {
-                        this.form.show = false;
+                        this.form.showDialog = false;
                     } else {
                         this.form.error = true;
                     }

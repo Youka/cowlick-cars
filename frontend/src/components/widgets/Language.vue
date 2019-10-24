@@ -5,7 +5,7 @@
             :items="Object.keys($i18n.messages)"
             :label="$t('nav.language')"
             prepend-inner-icon="mdi-translate"
-            hide-details outlined />
+            hide-details dense outlined />
     </div>
 </template>
 
