@@ -18,6 +18,7 @@ export default {
                 message: "Welcome to this portal."
             },
             login: {
+                guest: "Guest",
                 username: "Username",
                 password: "Password",
                 login: "Login",
@@ -56,6 +57,7 @@ export default {
                 message: "Willkommen in diesem Portal."
             },
             login: {
+                guest: "Gast",
                 username: "Nutzername",
                 password: "Passwort",
                 login: "Anmelden",

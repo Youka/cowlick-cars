@@ -1,0 +1,120 @@
+<template>
+    <v-card>
+        <!-- Menu definition -->
+        <v-menu bottom left offset-y nudge-right transition="slide-y-transition">
+            <!-- Trigger button -->
+            <template v-slot:activator="{ on }">
+                <v-btn v-if="session.info" color="success" v-on="on" class="font-weight-bold">
+                    {{session.info.username}}
+                </v-btn>
+                <v-btn v-else color="warning" v-on="on" class="font-italic d-block">
+                    {{$t("login.guest")}}
+                </v-btn>
+            </template>
+            <!-- Menu list -->
+            <v-list dense>
+                <!-- Login/logout -->
+                <v-list-item v-if="!session.info" @click="form.show = true">
+                    <v-list-item-content>
+                        {{$t("login.login")}}
+                    </v-list-item-content>
+                    <v-list-item-icon>
+                        <v-icon>mdi-login</v-icon>
+                    </v-list-item-icon>
+                </v-list-item>
+                <v-list-item v-if="session.info" @click="logout">
+                    <v-list-item-content>
+                        {{$t("login.logout")}}
+                    </v-list-item-content>
+                    <v-list-item-icon>
+                        <v-icon>mdi-logout</v-icon>
+                    </v-list-item-icon>
+                </v-list-item>
+            </v-list>
+        </v-menu>
+        <!-- Login form -->
+        <v-dialog width="300" v-model="form.show">
+            <v-card light>
+                <v-card-title>
+                    {{$t("login.login")}}
+                </v-card-title>
+                <v-card-text>
+                    <v-snackbar color="error" :timeout="3000" v-model="form.error">
+                        <v-icon>mdi-alert</v-icon>{{$t("login.login")}}<v-icon>mdi-alert</v-icon>
+                    </v-snackbar>
+                    <v-text-field
+                        v-model="form.username"
+                        :label="$t('login.username')"
+                        prepend-inner-icon="mdi-account-question"
+                        dense
+                        @keypress.enter="login" />
+                    <v-text-field
+                        v-model="form.password"
+                        :label="$t('login.password')"
+                        prepend-inner-icon="mdi-account-key"
+                        dense
+                        :type="form.showPassword ? 'text' : 'password'"
+                        :append-icon="form.showPassword ? 'mdi-eye-off' : 'mdi-eye'"
+                        @click:append="form.showPassword = !form.showPassword"
+                        @keypress.enter="login" />
+                </v-card-text>
+                <v-card-actions>
+                    <v-btn color="info" @click="login">{{$t("login.login")}}</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+    </v-card>
+</template>
+
+<script lang="ts">
+    import Vue from "vue";
+    import authService from "../../services/auth-service";
+
+    export default Vue.extend({
+        data: () => ({
+            session: {
+                updateInterval: undefined as (undefined | number),
+                info: undefined as (undefined | object)
+            },
+            form: {
+                show: false,
+                error: false,
+                username: "",
+                password: "",
+                showPassword: false
+            }
+        }),
+        methods: {
+            login() {
+                authService.login(this.form.username, this.form.password)
+                .then((success) => {
+                    this.update();
+                    this.form.username = this.form.password = "";
+                    if (success) {
+                        this.form.show = false;
+                    } else {
+                        this.form.error = true;
+                    }
+                });
+            },
+            logout() {
+                authService.logout()
+                .then(this.update);
+            },
+            update() {
+                authService.info()
+                .then((response) => {
+                    this.session.info = response.data;
+                });
+            }
+        },
+        // Update session by intervals
+        mounted() {
+            this.update();
+            this.session.updateInterval = setInterval(this.update, 60 * 1000);
+        },
+        beforeDestroy() {
+            clearInterval(this.session.updateInterval);
+        }
+    });
+</script>

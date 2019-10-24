@@ -14,6 +14,7 @@
             <v-app-bar-nav-icon @click="navigationVisible = !navigationVisible" />
             <v-toolbar-title>{{title}}</v-toolbar-title>
             <v-spacer />
+            <clc-login class="mr-3" />
             <clc-language />
         </v-app-bar>
         <!-- Main content -->
@@ -30,6 +31,7 @@
 <script lang="ts">
     // Imports
     import { mapFields } from "vuex-map-fields";
+    import Login from "./widgets/Login.vue";
     import Language from "./widgets/Language.vue";
 
     // Extend vue instance of component
@@ -42,6 +44,7 @@
             "navigationVisible"
         ]),
         components: {
+            "clc-login": Login,
             "clc-language": Language
         }
     };
