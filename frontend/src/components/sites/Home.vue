@@ -5,7 +5,7 @@
                 <clc-hello />
             </v-col>
             <v-col xl="6" lg="6" md="12" sm="12" xs="12">
-                <clc-login />
+                <clc-hello />
             </v-col>
         </v-row>
     </v-container>
@@ -13,12 +13,10 @@
 
 <script lang="ts">
     import Hello from "../tiles/Hello.vue";
-    import Login from "../tiles/Login.vue";
 
     export default {
         components: {
-            "clc-hello": Hello,
-            "clc-login": Login
+            "clc-hello": Hello
         }
     };
 </script>

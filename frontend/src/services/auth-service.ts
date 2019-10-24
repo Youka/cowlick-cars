@@ -7,7 +7,7 @@ class AuthService extends ServiceBase {
         const response = await this.fetch("/info");
         return {
             status: response.status,
-            data: response.ok ? await response.json() : null
+            data: response.ok ? await response.json() : undefined
         };
     }
 }

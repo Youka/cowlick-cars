@@ -18,10 +18,10 @@ export default {
                 message: "Welcome to this portal."
             },
             login: {
-                title: "Session",
+                username: "Username",
+                password: "Password",
                 login: "Login",
-                logout: "Logout",
-                info: "Info"
+                logout: "Logout"
             },
             playground: {
                 counter: {
@@ -56,10 +56,10 @@ export default {
                 message: "Willkommen in diesem Portal."
             },
             login: {
-                title: "Sitzung",
+                username: "Nutzername",
+                password: "Passwort",
                 login: "Anmelden",
-                logout: "Abmelden",
-                info: "Information"
+                logout: "Abmelden"
             },
             playground: {
                 counter: {
