@@ -11,15 +11,24 @@
         <v-tab>{{$t("playground.todos.title")}}</v-tab>
         <v-tab-item class="pa-3">
             <ul v-if="$i18n.locale == 'en'">
-                <li v-for="todo in todos" :key="todo">
-                    {{todo}}
+                <li v-for="(todo, index) in todos" :key="todo">
+                    {{todo}} ({{index}})
                 </li>
             </ul>
+        </v-tab-item>
+        <!-- Component communication -->
+        <v-tab>{{$t("playground.communication")}}</v-tab>
+        <v-tab-item>
+            <clc-communication name="Mustermann" @foo="print('foo')">
+                Max
+            </clc-communication>
         </v-tab-item>
     </v-tabs>
 </template>
 
 <script lang="ts">
+    import PlaygroundCommunication from "../widgets/PlaygroundCommunication.vue";
+
     export default {
         data() {
             return {
@@ -30,6 +39,14 @@
                     "Sleep"
                 ]
             };
+        },
+        methods: {
+            print: (msg: string) => {
+                console.info(msg);
+            }
+        },
+        components: {
+            "clc-communication": PlaygroundCommunication
         }
     };
 </script>

@@ -36,7 +36,8 @@ export default {
                 },
                 todos: {
                     title: "To do"
-                }
+                },
+                communication: "Communication"
             },
             dataSandbox: {
                 products: {
@@ -80,7 +81,8 @@ export default {
                 },
                 todos: {
                     title: "Erledigungen"
-                }
+                },
+                communication: "Kommunikation"
             },
             dataSandbox: {
                 products: {
