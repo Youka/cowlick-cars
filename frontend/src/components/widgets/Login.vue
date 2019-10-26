@@ -4,11 +4,13 @@
         <v-menu bottom left offset-y transition="slide-y-transition">
             <!-- Open button -->
             <template v-slot:activator="{ on }">
-                <v-btn v-if="session.info" color="success" v-on="on" class="font-weight-bold">
+                <v-btn v-if="session.info" color="success" class="font-weight-bold" v-on="on">
                     {{session.info.username}}
+                    <v-icon right>mdi-chevron-down</v-icon>
                 </v-btn>
-                <v-btn v-else color="warning" v-on="on" class="font-italic d-block">
+                <v-btn v-else color="warning" class="font-italic d-block" v-on="on">
                     {{$t("login.guest")}}
+                    <v-icon right>mdi-chevron-down</v-icon>
                 </v-btn>
             </template>
             <!-- Menu list -->
@@ -73,7 +75,10 @@
                 </v-card-text>
                 <!-- Submit -->
                 <v-card-actions>
-                    <v-btn color="info" @click="login">{{$t("login.login")}}</v-btn>
+                    <v-btn color="info" @click="login">
+                        {{$t("login.login")}}
+                        <v-icon right>mdi-login</v-icon>
+                    </v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>

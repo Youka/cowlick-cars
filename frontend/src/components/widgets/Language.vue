@@ -4,7 +4,7 @@
             v-model="language"
             :items="Object.keys($i18n.messages)"
             :label="$t('nav.language')"
-            prepend-inner-icon="mdi-translate"
+            prepend-inner-icon="mdi-web-box"
             hide-details dense outlined />
     </div>
 </template>
