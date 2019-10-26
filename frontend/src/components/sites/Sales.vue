@@ -1,10 +1,10 @@
 <template>
     <v-container fluid>
-        <v-row>
+        <v-row dense>
             <v-col xl="4" lg="4" md="12" sm="12" xs="12">
                 <clc-demo-counter />
-                <clc-demo-todos />
-                <clc-demo-component name="Mustermann" @foo="print('foo')">
+                <clc-demo-todos class="mt-2" />
+                <clc-demo-component name="Mustermann" @foo="print('foo')" class="mt-2">
                     Max
                 </clc-demo-component>
             </v-col>
