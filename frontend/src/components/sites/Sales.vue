@@ -2,7 +2,11 @@
     <v-container fluid>
         <v-row>
             <v-col xl="4" lg="4" md="12" sm="12" xs="12">
-                <clc-playground />
+                <clc-demo-counter />
+                <clc-demo-todos />
+                <clc-demo-component name="Mustermann" @foo="print('foo')">
+                    Max
+                </clc-demo-component>
             </v-col>
             <v-col xl="8" lg="8" md="12" sm="12" xs="12">
                 <clc-data-sandbox />
@@ -12,12 +16,21 @@
 </template>
 
 <script lang="ts">
-    import Playground from "../tiles/Playground.vue";
+    import DemoCounter from "../tiles/DemoCounter.vue";
+    import DemoTodos from "../tiles/DemoTodos.vue";
+    import DemoComponent from "../tiles/DemoComponent.vue";
     import DataSandbox from "../tiles/DataSandbox.vue";
 
     export default {
+        methods: {
+            print: (msg: string) => {
+                console.info(msg);
+            }
+        },
         components: {
-            "clc-playground": Playground,
+            "clc-demo-counter": DemoCounter,
+            "clc-demo-todos": DemoTodos,
+            "clc-demo-component": DemoComponent,
             "clc-data-sandbox": DataSandbox
         }
     };

@@ -29,7 +29,7 @@ export default {
                 logout: "Logout",
                 info: "Information"
             },
-            playground: {
+            demo: {
                 counter: {
                     title: "Counter",
                     incrementCounter: "Increment counter"
@@ -37,7 +37,9 @@ export default {
                 todos: {
                     title: "To do"
                 },
-                communication: "Communication"
+                component: {
+                    title: "Communication"
+                }
             },
             dataSandbox: {
                 products: {
@@ -74,7 +76,7 @@ export default {
                 logout: "Abmelden",
                 info: "Information"
             },
-            playground: {
+            demo: {
                 counter: {
                     title: "Zähler",
                     incrementCounter: "Zähler erhöhen"
@@ -82,7 +84,9 @@ export default {
                 todos: {
                     title: "Erledigungen"
                 },
-                communication: "Kommunikation"
+                component: {
+                    title: "Kommunikation"
+                }
             },
             dataSandbox: {
                 products: {
