@@ -61,13 +61,16 @@
                         v-model="form.username"
                         :label="$t('login.username')"
                         prepend-inner-icon="mdi-account-question"
-                        dense
+                        dense counter maxlength="24"
+                        :rules="[
+                            (value) => value.charAt(0) === '$' ? $t('login.rules.dollarBeginning') : true
+                        ]"
                         @keypress.enter="login" />
                     <v-text-field
                         v-model="form.password"
                         :label="$t('login.password')"
                         prepend-inner-icon="mdi-account-key"
-                        dense
+                        dense counter maxlength="128"
                         :type="form.showPassword ? 'text' : 'password'"
                         :append-icon="form.showPassword ? 'mdi-eye-off' : 'mdi-eye'"
                         @click:append="form.showPassword = !form.showPassword"

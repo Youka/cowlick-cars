@@ -27,7 +27,10 @@ export default {
                 roles: "Roles",
                 login: "Login",
                 logout: "Logout",
-                info: "Information"
+                info: "Information",
+                rules: {
+                    dollarBeginning: "$ character not allowed at beginning!"
+                }
             },
             demo: {
                 counter: {
@@ -74,7 +77,10 @@ export default {
                 roles: "Rollen",
                 login: "Anmelden",
                 logout: "Abmelden",
-                info: "Information"
+                info: "Information",
+                rules: {
+                    dollarBeginning: "$ Zeichen nicht am Anfang erlaubt!"
+                }
             },
             demo: {
                 counter: {
