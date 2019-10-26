@@ -23,7 +23,7 @@
         </v-content>
         <!-- Footer -->
         <v-footer app>
-            <v-chip color="info">Work in progress</v-chip>
+            <v-chip color="info"><v-icon left>mdi-information</v-icon>Work in progress</v-chip>
         </v-footer>
     </v-app>
 </template>

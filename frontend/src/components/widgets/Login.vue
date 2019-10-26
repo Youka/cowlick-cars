@@ -78,7 +78,7 @@
                 </v-card-text>
                 <!-- Submit -->
                 <v-card-actions>
-                    <v-btn color="info" @click="login">
+                    <v-btn color="info" class="mx-auto" @click="login">
                         {{$t("login.login")}}
                         <v-icon right>mdi-login</v-icon>
                     </v-btn>

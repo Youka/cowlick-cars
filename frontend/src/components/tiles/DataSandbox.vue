@@ -7,7 +7,7 @@
             <v-text-field
                 v-model="table.search"
                 :label="$t('dataSandbox.products.search')"
-                prepend-icon="mdi-table-search"
+                prepend-inner-icon="mdi-table-search"
                 filled rounded dense hide-details />
             <!-- Data -->
             <v-data-table
