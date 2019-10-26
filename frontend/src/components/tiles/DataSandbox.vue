@@ -18,6 +18,7 @@
                 :items-per-page="table.pageItems"
                 :no-data-text="$t('dataSandbox.products.noData')"
                 dense>
+                <!-- Custom data column format -->
                 <template v-slot:item.price="{ value }">
                     {{
                         value.toLocaleString(undefined, {
@@ -29,6 +30,13 @@
                             maximumFractionDigits: 2
                         })
                     }}
+                </template>
+                <!-- Custom group header -->
+                <template v-slot:group.header="{ headers, group, toggle }">
+                    <td :colspan="headers.length">
+                        <v-icon @click="table.groupToggled[group] = !toggle()">mdi-{{table.groupToggled[group] ? "plus" : "minus"}}</v-icon>
+                        {{group}}
+                    </td>
                 </template>
             </v-data-table>
         </v-tab-item>
@@ -56,6 +64,8 @@
                     search: "",
                     pageItems: 5,
                     groupBy: "category",
+                    // State
+                    groupToggled: {},
                     // Content
                     headers: [
                         {
