@@ -181,9 +181,9 @@ module.exports = {
 	},
 	// Modify performance hints
 	performance: {
-		// All entry points <1mb
-		maxEntrypointSize: 1000000,
-		// All assets <5mb
-		maxAssetSize: 5000000
+		// All entry points <2mb
+		maxEntrypointSize: 2000000,
+		// All assets <10mb
+		maxAssetSize: 10000000
 	}
 }
