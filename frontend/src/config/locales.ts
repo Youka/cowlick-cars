@@ -41,7 +41,7 @@ export default {
                     title: "To do"
                 },
                 component: {
-                    title: "Communication"
+                    title: "Component"
                 }
             },
             dataSandbox: {
@@ -91,7 +91,7 @@ export default {
                     title: "Erledigungen"
                 },
                 component: {
-                    title: "Kommunikation"
+                    title: "Komponente"
                 }
             },
             dataSandbox: {
