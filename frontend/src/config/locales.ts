@@ -44,15 +44,13 @@ export default {
                     title: "Component"
                 }
             },
-            dataSandbox: {
-                products: {
-                    title: "Products",
-                    search: "Search",
-                    noData: "No data"
-                },
-                temperatures: {
-                    title: "Temperatures"
-                }
+            groupedTable: {
+                title: "Grouped table",
+                search: "Search",
+                noData: "No data"
+            },
+            lineChart: {
+                title: "Line chart"
             }
         },
         // German
@@ -94,15 +92,13 @@ export default {
                     title: "Komponente"
                 }
             },
-            dataSandbox: {
-                products: {
-                    title: "Produkte",
-                    search: "Suche",
-                    noData: "Keine Daten"
-                },
-                temperatures: {
-                    title: "Temperaturen"
-                }
+            groupedTable: {
+                title: "Gruppierte Tabelle",
+                search: "Suche",
+                noData: "Keine Daten"
+            },
+            lineChart: {
+                title: "Linien-Diagramm"
             }
         }
     }
