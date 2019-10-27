@@ -62,9 +62,7 @@
                         :label="$t('login.username')"
                         prepend-inner-icon="mdi-account-question"
                         dense counter maxlength="24"
-                        :rules="[
-                            (value) => value.charAt(0) === '$' ? $t('login.rules.dollarBeginning') : true
-                        ]"
+                        :rules="[validateUsername]"
                         @keypress.enter="login" />
                     <v-text-field
                         v-model="form.password"
@@ -78,7 +76,7 @@
                 </v-card-text>
                 <!-- Submit -->
                 <v-card-actions>
-                    <v-btn color="info" class="mx-auto" @click="login">
+                    <v-btn color="info" class="mx-auto" :disabled="form.invalidUsername" @click="login">
                         {{$t("login.login")}}
                         <v-icon right>mdi-login</v-icon>
                     </v-btn>
@@ -124,6 +122,7 @@
                 password: "",
                 showPassword: false,
                 showDialog: false,
+                invalidUsername: false,
                 error: false
             }
         }),
@@ -150,6 +149,10 @@
                 .then((response) => {
                     this.session.info = response.data;
                 });
+            },
+            validateUsername(username: string) {
+                this.form.invalidUsername = username.charAt(0) === "$";
+                return this.form.invalidUsername ? this.$t("login.rules.dollarBeginning") : true;
             }
         },
         // Update session by intervals
