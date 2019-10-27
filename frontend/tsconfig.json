@@ -9,16 +9,15 @@
         "noImplicitReturns": true,
         "noImplicitAny": true,
         "module": "esnext",
-        "target": "es5",
         "moduleResolution": "node",
         "allowJs": true,
-        "types": [
-            "vuetify"
-        ],
+        "target": "es2015",
         "lib": [
             "dom",
-            "es5",
-            "es2015.promise"
+            "es2015"
+        ],
+        "types": [
+            "vuetify"
         ]
     }
 }
