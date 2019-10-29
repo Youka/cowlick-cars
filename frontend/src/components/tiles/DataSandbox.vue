@@ -8,7 +8,7 @@
         <!-- Tab contents -->
         <v-tabs-items v-model="activeTab">
             <v-tab-item class="pa-3">
-                <clc-groupedtable />
+                <clc-groupedtable :data="tableData" />
             </v-tab-item>
             <v-tab-item class="pa-3">
                 <clc-linechart :data="chartData" />
@@ -24,6 +24,43 @@
     export default {
         data: () => ({
             activeTab: null,
+            tableData: [
+                {
+                    category: "Food",
+                    product: "Banana",
+                    price: 0.40
+                },
+                {
+                    category: "Food",
+                    product: "Apple",
+                    price: 0.50
+                },
+                {
+                    category: "Food",
+                    product: "Nut",
+                    price: 0.05
+                },
+                {
+                    category: "Food",
+                    product: "Water bottle",
+                    price: 0.80
+                },
+                {
+                    category: "Food",
+                    product: "Smoothie",
+                    price: 2.30
+                },
+                {
+                    category: "Entertainment",
+                    product: "Video game",
+                    price: 59.99
+                },
+                {
+                    category: "Vehicles",
+                    product: "Boat",
+                    price: 32_757
+                }
+            ],
             chartData: [
                 {
                     date: new Date("2015-01-01T21:00:00"),

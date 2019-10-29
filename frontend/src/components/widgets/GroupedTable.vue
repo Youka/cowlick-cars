@@ -41,63 +41,34 @@
 
 <script lang="ts">
     export default {
-        data: () => ({
-            // Settings
-            search: "",
-            pageItems: 5,
-            groupBy: "category",
-            // State
-            groupToggled: {},
-            // Content
-            headers: [
-                {
-                    text: "Product",
-                    value: "product",
-                    align: "start"
-                },
-                {
-                    text: "Price",
-                    value: "price",
-                    align: "end"
-                }
-            ],
-            data: [
-                {
-                    category: "Food",
-                    product: "Banana",
-                    price: 0.40
-                },
-                {
-                    category: "Food",
-                    product: "Apple",
-                    price: 0.50
-                },
-                {
-                    category: "Food",
-                    product: "Nut",
-                    price: 0.05
-                },
-                {
-                    category: "Food",
-                    product: "Water bottle",
-                    price: 0.80
-                },
-                {
-                    category: "Food",
-                    product: "Smoothie",
-                    price: 2.30
-                },
-                {
-                    category: "Entertainment",
-                    product: "Video game",
-                    price: 59.99
-                },
-                {
-                    category: "Vehicles",
-                    product: "Boat",
-                    price: 32_757
-                }
-            ]
-        })
+        props: {
+            data: {
+                type: Array,
+                required: true
+            }
+        },
+        data() {
+            return {
+                // Settings
+                search: "",
+                pageItems: 5,
+                groupBy: "category",
+                // State
+                groupToggled: {},
+                // Content
+                headers: [
+                    {
+                        text: "Product",
+                        value: "product",
+                        align: "start"
+                    },
+                    {
+                        text: "Price",
+                        value: "price",
+                        align: "end"
+                    }
+                ]
+            };
+        }
     };
 </script>
