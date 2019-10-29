@@ -11,7 +11,7 @@
                 <clc-groupedtable />
             </v-tab-item>
             <v-tab-item class="pa-3">
-                <clc-linechart />
+                <clc-linechart :data="chartData" />
             </v-tab-item>
         </v-tabs-items>
     </v-card>
@@ -23,7 +23,29 @@
 
     export default {
         data: () => ({
-            activeTab: null
+            activeTab: null,
+            chartData: [
+                {
+                    date: new Date("2015-01-01T21:00:00"),
+                    value: 0
+                },
+                {
+                    date: new Date("2016-01-01T00:00:00"),
+                    value: 64
+                },
+                {
+                    date: new Date("2017-01-01T10:00:00"),
+                    value: 135
+                },
+                {
+                    date: new Date("2018-01-01T14:00:00"),
+                    value: 96
+                },
+                {
+                    date: new Date("2019-01-01T17:00:00"),
+                    value: 147
+                }
+            ]
         }),
         components: {
             "clc-groupedtable": GroupedTable,
